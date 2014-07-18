@@ -1,0 +1,121 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+	background: #222 url(http://img.wallpaperstock.net:81/gray-pattern-wallpapers_31092_1920x1080.jpg) center top;
+	width: 100%;
+	height: 100%;
+}
+
+#content {
+	width: 900px;
+	margin: 20px auto;
+	background: #333;
+	padding: 20px 0;
+	color: #e0e0e0;
+    box-shadow: 0px 0px 10px 5px rgba(000,000,000,1);
+}
+
+#title {
+	font-size: 40px;
+	background: #666;
+	margin: 10px 0 20px;
+	padding: 4px 10px;
+}
+
+#page-footer {
+	font-size: 10px;
+	color: #666;
+	text-align: center;
+	margin: 10px 0 0;
+}
+
+#historyContainer {
+	font-size: 12px;
+	background: #666;
+	margin: 20px 0 0;
+	padding: 4px;
+}
+
+.cube {
+	background: #111;
+	border: 15px solid #000;
+	padding: 10px;
+	margin: 0 auto;
+	border-radius: 3px;
+}
+
+.cube:focus {
+    background: #171717;
+    border-color: #0a0a0a;
+    outline: none;
+}
+
+.cube .cube-face td {
+	width: 35px;
+	height: 35px;
+	background: red;
+	border-radius: 3px;
+	border: 2px solid #ffffff;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+	color: #888;
+}
+
+.button {
+	font-size: 18px;
+	color: #ffffff;
+	padding: 9px 20px;
+	border-radius: 3px;
+	border: 1px solid #000000;
+	background: linear-gradient(to bottom, #333333 0%, #000000);
+	box-shadow:
+		0px 1px 1px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+.button:hover {
+	background: linear-gradient(to bottom, #444444 0%, #111111);
+}
+
+.button:active {
+	background: linear-gradient(to top, #333333 0%, #000000);
+}
+
+.button.cw {
+	background: linear-gradient(to bottom, #333333 0%, #000000);
+}
+
+.button.cw:hover {
+	background: linear-gradient(to bottom, #444444 0%, #111111);
+}
+
+.button.cw:active {
+	background: linear-gradient(to top, #333333 0%, #000000);
+}
+
+.button.ccw {
+	background: linear-gradient(to bottom, #333344 0%, #000011);
+}
+
+.button.ccw:hover {
+	background: linear-gradient(to bottom, #444455 0%, #111122);
+}
+
+.button.ccw:active {
+	background: linear-gradient(to top, #333344 0%, #000011);
+}
+
+.control-bar {
+	width: 800px;
+	margin: 10px auto;
+	text-align: center;
+}
+
+#faceMoveButtons {
+	margin: 0 auto;
+}
