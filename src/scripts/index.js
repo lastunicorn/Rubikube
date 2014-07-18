@@ -78,8 +78,7 @@
     }
 
     function onButtonScrambleClicked() {
-        //scramble();
-        moveCube(lu.rubikube.CubeMove.turnLeft);
+        scramble();
     }
 
     function onButtonUndoClicked() {

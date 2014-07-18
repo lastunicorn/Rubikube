@@ -18,8 +18,8 @@ window.lu = window.lu || {};
 lu.rubikube = lu.rubikube || {};
 
 lu.rubikube.CubeFaceColors = function () {
-    this.getColorFor = function (cubeFace) {
-        switch (cubeFace) {
+    this.getColorFor = function (cubeFaceId) {
+        switch (cubeFaceId) {
             case lu.rubikube.CubeFace.left:
                 return "#ff9933"; // orange
 

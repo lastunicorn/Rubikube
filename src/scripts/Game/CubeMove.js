@@ -19,18 +19,25 @@ lu.rubikube = lu.rubikube || {};
 
 lu.rubikube.CubeMove = {
     none: 0,
+
     left: 1,
     leftInverse: 2,
+
     right: 3,
     rightInverse: 4,
+
     up: 5,
     upInverse: 6,
+
     down: 7,
     downInverse: 8,
+
     front: 9,
     frontInverse: 10,
+
     back: 11,
     backInverse: 12,
+
     turnLeft: 13,
     turnRight: 14,
     turnUp: 15,
