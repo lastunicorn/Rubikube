@@ -43,7 +43,7 @@ lu.rubikube.CubeUserControl = function (parentSelector, cube) {
         for (var i = 0; i < 9; i++) {
             var $cell = $($faceCells.get(i));
             $cell.css("background", cellColors[offset + i]);
-            $cell.text(cellValues[offset + i + 1]);
+            //$cell.text(cellValues[offset + i + 1]);
         }
     }
 

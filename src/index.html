@@ -13,7 +13,7 @@
         <script type="text/javascript" src="scripts/Game/Transformations.js"></script>
         <script type="text/javascript" src="scripts/Game/Cube.js"></script>
 
-        <script type="text/javascript" src="scripts/Game/CubeUserControl.js"></script>
+        <script type="text/javascript" src="scripts/CubeUserControl.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
     </head>
     <body>
@@ -21,6 +21,13 @@
             <div id="title">Rubikube - A Rubik's Cube Game</div>
 
             <div id="cubeContainer"></div>
+
+            <div class="help-bar">
+                With focus on the cube, try:<br/>
+                <strong>l, r, u, d, f, b</strong> - rotates the corresponding faces of the cube clockwise.<br/>
+                <strong>Shift + (l, r, u, d, f, b)</strong> - rotates the faces counterclockwise,<br/>
+                <strong>left, right, up, down arrows</strong> - rotates the whole cube.
+            </div>
 
             <div class="control-bar">
                 <table id="faceMoveButtons">

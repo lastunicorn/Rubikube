@@ -66,7 +66,7 @@ body {
 .button {
 	font-size: 18px;
 	color: #ffffff;
-	padding: 9px 20px;
+	padding: 8px 19px;
 	border-radius: 3px;
 	border: 1px solid #000000;
 	background: linear-gradient(to bottom, #333333 0%, #000000);
@@ -111,10 +111,20 @@ body {
 }
 
 .control-bar {
-	width: 800px;
 	margin: 10px auto;
 	text-align: center;
 }
+
+.help-bar {
+    margin: 10px auto;
+    font-size: 11px;
+    text-align: center;
+    color: #aaa;
+}
+
+.help-bar strong {
+     color: #f0f0f0;
+ }
 
 #faceMoveButtons {
 	margin: 0 auto;
