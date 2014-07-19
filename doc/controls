@@ -1,0 +1,19 @@
+letters
+------------
+face rotation clockwise: l, r, u, d, f, b
+face rotation counter-clockwise: shift + (l, r, u, d, f, b)
+cube rotation: left, right, up, down arrows
+
+numeric pad
+------------
+face rotation clockwise: 4, 6, 8, 2, 5, 9
+face rotation counter-clockwise: shift + (4, 6, 8, 2, 5, 9)
+cube rotation: ctrl + (4, 6, 8, 2)
+
+mouse
+------------
+face rotation clockwise: click the center cell
+face rotation counter-clockwise:
+	- shift + (click the center cell)
+	- right click
+cube rotation: none

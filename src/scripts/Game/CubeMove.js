@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.CubeMove = {
+dust.rubikube.CubeMove = {
     none: 0,
 
     left: 1,
@@ -44,54 +44,54 @@ lu.rubikube.CubeMove = {
     turnDown: 16
 };
 
-lu.rubikube.CubeMove.toString = function (moveId) {
+dust.rubikube.CubeMove.toString = function (moveId) {
     switch (moveId) {
-        case lu.rubikube.CubeMove.left:
+        case dust.rubikube.CubeMove.left:
             return "L";
 
-        case lu.rubikube.CubeMove.leftInverse:
+        case dust.rubikube.CubeMove.leftInverse:
             return "L'";
 
-        case lu.rubikube.CubeMove.right:
+        case dust.rubikube.CubeMove.right:
             return "R";
 
-        case lu.rubikube.CubeMove.rightInverse:
+        case dust.rubikube.CubeMove.rightInverse:
             return "R'";
 
-        case lu.rubikube.CubeMove.up:
+        case dust.rubikube.CubeMove.up:
             return "U";
 
-        case lu.rubikube.CubeMove.upInverse:
+        case dust.rubikube.CubeMove.upInverse:
             return "U'";
 
-        case lu.rubikube.CubeMove.down:
+        case dust.rubikube.CubeMove.down:
             return "D";
 
-        case lu.rubikube.CubeMove.downInverse:
+        case dust.rubikube.CubeMove.downInverse:
             return "D'";
 
-        case lu.rubikube.CubeMove.front:
+        case dust.rubikube.CubeMove.front:
             return "F";
 
-        case lu.rubikube.CubeMove.frontInverse:
+        case dust.rubikube.CubeMove.frontInverse:
             return "F'";
 
-        case lu.rubikube.CubeMove.back:
+        case dust.rubikube.CubeMove.back:
             return "B";
 
-        case lu.rubikube.CubeMove.backInverse:
+        case dust.rubikube.CubeMove.backInverse:
             return "B'";
 
-        case lu.rubikube.CubeMove.turnLeft:
+        case dust.rubikube.CubeMove.turnLeft:
             return "\u25C0";
 
-        case lu.rubikube.CubeMove.turnRight:
+        case dust.rubikube.CubeMove.turnRight:
             return "\u25B6";
 
-        case lu.rubikube.CubeMove.turnUp:
+        case dust.rubikube.CubeMove.turnUp:
             return "\u25B2";
 
-        case lu.rubikube.CubeMove.turnDown:
+        case dust.rubikube.CubeMove.turnDown:
             return "\u25BC";
 
         default:
@@ -99,108 +99,108 @@ lu.rubikube.CubeMove.toString = function (moveId) {
     }
 };
 
-lu.rubikube.CubeMove.parse = function (str) {
+dust.rubikube.CubeMove.parse = function (str) {
     var moves = [];
     var items = str.split(" ");
 
     for (var i = 0; i < items.length; i++) {
         switch (items[i].toLowerCase()) {
             case "l":
-                moves.push(lu.rubikube.CubeMove.left);
+                moves.push(dust.rubikube.CubeMove.left);
                 break;
 
             case "l'":
-                moves.push(lu.rubikube.CubeMove.leftInverse);
+                moves.push(dust.rubikube.CubeMove.leftInverse);
                 break;
 
             case "l2":
-                moves.push(lu.rubikube.CubeMove.left);
-                moves.push(lu.rubikube.CubeMove.left);
+                moves.push(dust.rubikube.CubeMove.left);
+                moves.push(dust.rubikube.CubeMove.left);
                 break;
 
             case "r":
-                moves.push(lu.rubikube.CubeMove.right);
+                moves.push(dust.rubikube.CubeMove.right);
                 break;
 
             case "r'":
-                moves.push(lu.rubikube.CubeMove.rightInverse);
+                moves.push(dust.rubikube.CubeMove.rightInverse);
                 break;
 
             case "r2":
-                moves.push(lu.rubikube.CubeMove.right);
-                moves.push(lu.rubikube.CubeMove.right);
+                moves.push(dust.rubikube.CubeMove.right);
+                moves.push(dust.rubikube.CubeMove.right);
                 break;
 
             case "u":
-                moves.push(lu.rubikube.CubeMove.up);
+                moves.push(dust.rubikube.CubeMove.up);
                 break;
 
             case "u'":
-                moves.push(lu.rubikube.CubeMove.upInverse);
+                moves.push(dust.rubikube.CubeMove.upInverse);
                 break;
 
             case "u2":
-                moves.push(lu.rubikube.CubeMove.up);
-                moves.push(lu.rubikube.CubeMove.up);
+                moves.push(dust.rubikube.CubeMove.up);
+                moves.push(dust.rubikube.CubeMove.up);
                 break;
 
             case "d":
-                moves.push(lu.rubikube.CubeMove.down);
+                moves.push(dust.rubikube.CubeMove.down);
                 break;
 
             case "d'":
-                moves.push(lu.rubikube.CubeMove.downInverse);
+                moves.push(dust.rubikube.CubeMove.downInverse);
                 break;
 
             case "d2":
-                moves.push(lu.rubikube.CubeMove.down);
-                moves.push(lu.rubikube.CubeMove.down);
+                moves.push(dust.rubikube.CubeMove.down);
+                moves.push(dust.rubikube.CubeMove.down);
                 break;
 
             case "f":
-                moves.push(lu.rubikube.CubeMove.front);
+                moves.push(dust.rubikube.CubeMove.front);
                 break;
 
             case "f'":
-                moves.push(lu.rubikube.CubeMove.frontInverse);
+                moves.push(dust.rubikube.CubeMove.frontInverse);
                 break;
 
             case "f2":
-                moves.push(lu.rubikube.CubeMove.front);
-                moves.push(lu.rubikube.CubeMove.front);
+                moves.push(dust.rubikube.CubeMove.front);
+                moves.push(dust.rubikube.CubeMove.front);
                 break;
 
             case "b":
-                moves.push(lu.rubikube.CubeMove.back);
+                moves.push(dust.rubikube.CubeMove.back);
                 break;
 
             case "b'":
-                moves.push(lu.rubikube.CubeMove.backInverse);
+                moves.push(dust.rubikube.CubeMove.backInverse);
                 break;
 
             case "b2":
-                moves.push(lu.rubikube.CubeMove.back);
-                moves.push(lu.rubikube.CubeMove.back);
+                moves.push(dust.rubikube.CubeMove.back);
+                moves.push(dust.rubikube.CubeMove.back);
                 break;
 
             case "\u25C0": // left arrow
-                moves.push(lu.rubikube.CubeMove.turnLeft);
+                moves.push(dust.rubikube.CubeMove.turnLeft);
                 break;
 
             case "\u25B6": // right arrow
-                moves.push(lu.rubikube.CubeMove.turnRight);
+                moves.push(dust.rubikube.CubeMove.turnRight);
                 break;
 
             case "\u25B2": // up arrow
-                moves.push(lu.rubikube.CubeMove.turnUp);
+                moves.push(dust.rubikube.CubeMove.turnUp);
                 break;
 
             case "\u25BC": // down arrow
-                moves.push(lu.rubikube.CubeMove.turnDown);
+                moves.push(dust.rubikube.CubeMove.turnDown);
                 break;
 
             default:
-                moves.push(lu.rubikube.CubeMove.none);
+                moves.push(dust.rubikube.CubeMove.none);
                 break;
         }
     }
@@ -208,57 +208,57 @@ lu.rubikube.CubeMove.parse = function (str) {
     return moves;
 };
 
-lu.rubikube.CubeMove.inverse = function (moveId) {
+dust.rubikube.CubeMove.inverse = function (moveId) {
     switch (moveId) {
-        case lu.rubikube.CubeMove.left:
-            return lu.rubikube.CubeMove.leftInverse;
+        case dust.rubikube.CubeMove.left:
+            return dust.rubikube.CubeMove.leftInverse;
 
-        case lu.rubikube.CubeMove.leftInverse:
-            return lu.rubikube.CubeMove.left;
+        case dust.rubikube.CubeMove.leftInverse:
+            return dust.rubikube.CubeMove.left;
 
-        case lu.rubikube.CubeMove.right:
-            return lu.rubikube.CubeMove.rightInverse;
+        case dust.rubikube.CubeMove.right:
+            return dust.rubikube.CubeMove.rightInverse;
 
-        case lu.rubikube.CubeMove.rightInverse:
-            return lu.rubikube.CubeMove.right;
+        case dust.rubikube.CubeMove.rightInverse:
+            return dust.rubikube.CubeMove.right;
 
-        case lu.rubikube.CubeMove.up:
-            return lu.rubikube.CubeMove.upInverse;
+        case dust.rubikube.CubeMove.up:
+            return dust.rubikube.CubeMove.upInverse;
 
-        case lu.rubikube.CubeMove.upInverse:
-            return lu.rubikube.CubeMove.up;
+        case dust.rubikube.CubeMove.upInverse:
+            return dust.rubikube.CubeMove.up;
 
-        case lu.rubikube.CubeMove.down:
-            return lu.rubikube.CubeMove.downInverse;
+        case dust.rubikube.CubeMove.down:
+            return dust.rubikube.CubeMove.downInverse;
 
-        case lu.rubikube.CubeMove.downInverse:
-            return lu.rubikube.CubeMove.down;
+        case dust.rubikube.CubeMove.downInverse:
+            return dust.rubikube.CubeMove.down;
 
-        case lu.rubikube.CubeMove.front:
-            return lu.rubikube.CubeMove.frontInverse;
+        case dust.rubikube.CubeMove.front:
+            return dust.rubikube.CubeMove.frontInverse;
 
-        case lu.rubikube.CubeMove.frontInverse:
-            return lu.rubikube.CubeMove.front;
+        case dust.rubikube.CubeMove.frontInverse:
+            return dust.rubikube.CubeMove.front;
 
-        case lu.rubikube.CubeMove.back:
-            return lu.rubikube.CubeMove.backInverse;
+        case dust.rubikube.CubeMove.back:
+            return dust.rubikube.CubeMove.backInverse;
 
-        case lu.rubikube.CubeMove.backInverse:
-            return lu.rubikube.CubeMove.back;
+        case dust.rubikube.CubeMove.backInverse:
+            return dust.rubikube.CubeMove.back;
 
-        case lu.rubikube.CubeMove.turnLeft:
-            return lu.rubikube.CubeMove.turnRight;
+        case dust.rubikube.CubeMove.turnLeft:
+            return dust.rubikube.CubeMove.turnRight;
 
-        case lu.rubikube.CubeMove.turnRight:
-            return lu.rubikube.CubeMove.turnLeft;
+        case dust.rubikube.CubeMove.turnRight:
+            return dust.rubikube.CubeMove.turnLeft;
 
-        case lu.rubikube.CubeMove.turnUp:
-            return lu.rubikube.CubeMove.turnDown;
+        case dust.rubikube.CubeMove.turnUp:
+            return dust.rubikube.CubeMove.turnDown;
 
-        case lu.rubikube.CubeMove.turnDown:
-            return lu.rubikube.CubeMove.turnUp;
+        case dust.rubikube.CubeMove.turnDown:
+            return dust.rubikube.CubeMove.turnUp;
 
         default:
-            return lu.rubikube.CubeMove.none;
+            return dust.rubikube.CubeMove.none;
     }
 }

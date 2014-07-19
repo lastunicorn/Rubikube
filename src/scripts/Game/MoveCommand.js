@@ -14,12 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.MoveCommand = function (cubeCommander, moveId) {
+dust.rubikube.MoveCommand = function (cubeCommander, moveId) {
     function calculateUndoMove () {
-        return lu.rubikube.CubeMove.inverse(moveId);
+        return dust.rubikube.CubeMove.inverse(moveId);
     }
 
     this.execute = function () {
@@ -32,6 +32,6 @@ lu.rubikube.MoveCommand = function (cubeCommander, moveId) {
     };
 
     this.toString = function () {
-        return lu.rubikube.CubeMove.toString(moveId);
+        return dust.rubikube.CubeMove.toString(moveId);
     }
 };

@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.CubeUserControl = function (parentSelector, cube) {
+dust.rubikube.CubeUserControl = function (parentSelector, cube) {
     var $parent;
     var $cube;
 
@@ -111,63 +111,63 @@ lu.rubikube.CubeUserControl = function (parentSelector, cube) {
         switch (ev.which) {
             case 76: // l
                 if (ev.shiftKey)
-                    cube.move(lu.rubikube.CubeMove.leftInverse);
+                    cube.move(dust.rubikube.CubeMove.leftInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.left);
+                    cube.move(dust.rubikube.CubeMove.left);
                 break;
 
             case 82: // r
                 if (ev.shiftKey)
-                    cube.move(lu.rubikube.CubeMove.rightInverse);
+                    cube.move(dust.rubikube.CubeMove.rightInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.right);
+                    cube.move(dust.rubikube.CubeMove.right);
                 break;
 
             case 85: // u
                 if (ev.shiftKey)
-                    cube.move(lu.rubikube.CubeMove.upInverse);
+                    cube.move(dust.rubikube.CubeMove.upInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.up);
+                    cube.move(dust.rubikube.CubeMove.up);
                 break;
 
             case 68: // d
                 if (ev.shiftKey)
-                    cube.move(lu.rubikube.CubeMove.downInverse);
+                    cube.move(dust.rubikube.CubeMove.downInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.down);
+                    cube.move(dust.rubikube.CubeMove.down);
                 break;
 
             case 70: // f
                 if (ev.shiftKey)
-                    cube.move(lu.rubikube.CubeMove.frontInverse);
+                    cube.move(dust.rubikube.CubeMove.frontInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.front);
+                    cube.move(dust.rubikube.CubeMove.front);
                 break;
 
             case 66: // b
                 if (ev.shiftKey)
-                    cube.move(lu.rubikube.CubeMove.backInverse);
+                    cube.move(dust.rubikube.CubeMove.backInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.back);
+                    cube.move(dust.rubikube.CubeMove.back);
                 break;
 
             case 37: // left arrow
-                cube.move(lu.rubikube.CubeMove.turnLeft);
+                cube.move(dust.rubikube.CubeMove.turnLeft);
                 break;
 
             case 38:
                 // up arrow
-                cube.move(lu.rubikube.CubeMove.turnUp);
+                cube.move(dust.rubikube.CubeMove.turnUp);
                 break;
 
             case 39:
                 // right arrow
-                cube.move(lu.rubikube.CubeMove.turnRight);
+                cube.move(dust.rubikube.CubeMove.turnRight);
                 break;
 
             case 40:
                 // down arrow
-                cube.move(lu.rubikube.CubeMove.turnDown);
+                cube.move(dust.rubikube.CubeMove.turnDown);
                 break;
         }
     }
@@ -175,12 +175,12 @@ lu.rubikube.CubeUserControl = function (parentSelector, cube) {
     (function initialize() {
         $parent = $(parentSelector);
 
-        faceL = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.left);
-        faceR = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.right);
-        faceU = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.up);
-        faceD = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.down);
-        faceF = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.front);
-        faceB = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.back);
+        faceL = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.left);
+        faceR = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.right);
+        faceU = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.up);
+        faceD = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.down);
+        faceF = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.front);
+        faceB = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.back);
 
         createUi();
 

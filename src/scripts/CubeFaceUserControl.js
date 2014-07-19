@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
+dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
     var $parent;
     var $face;
     var $faceCells;
@@ -114,46 +114,46 @@ lu.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         }
 
         switch (cubeFaceId) {
-            case lu.rubikube.CubeFace.left:
+            case dust.rubikube.CubeFace.left:
                 if (ev.shiftKey || ev.which === 3)
-                    cube.move(lu.rubikube.CubeMove.leftInverse);
+                    cube.move(dust.rubikube.CubeMove.leftInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.left);
+                    cube.move(dust.rubikube.CubeMove.left);
                 break;
 
-            case lu.rubikube.CubeFace.right:
+            case dust.rubikube.CubeFace.right:
                 if (ev.shiftKey || ev.which === 3)
-                    cube.move(lu.rubikube.CubeMove.rightInverse);
+                    cube.move(dust.rubikube.CubeMove.rightInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.right);
+                    cube.move(dust.rubikube.CubeMove.right);
                 break;
 
-            case lu.rubikube.CubeFace.up:
+            case dust.rubikube.CubeFace.up:
                 if (ev.shiftKey || ev.which === 3)
-                    cube.move(lu.rubikube.CubeMove.upInverse);
+                    cube.move(dust.rubikube.CubeMove.upInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.up);
+                    cube.move(dust.rubikube.CubeMove.up);
                 break;
 
-            case lu.rubikube.CubeFace.down:
+            case dust.rubikube.CubeFace.down:
                 if (ev.shiftKey || ev.which === 3)
-                    cube.move(lu.rubikube.CubeMove.downInverse);
+                    cube.move(dust.rubikube.CubeMove.downInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.down);
+                    cube.move(dust.rubikube.CubeMove.down);
                 break;
 
-            case lu.rubikube.CubeFace.front:
+            case dust.rubikube.CubeFace.front:
                 if (ev.shiftKey || ev.which === 3)
-                    cube.move(lu.rubikube.CubeMove.frontInverse);
+                    cube.move(dust.rubikube.CubeMove.frontInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.front);
+                    cube.move(dust.rubikube.CubeMove.front);
                 break;
 
-            case lu.rubikube.CubeFace.back:
+            case dust.rubikube.CubeFace.back:
                 if (ev.shiftKey || ev.which === 3)
-                    cube.move(lu.rubikube.CubeMove.backInverse);
+                    cube.move(dust.rubikube.CubeMove.backInverse);
                 else
-                    cube.move(lu.rubikube.CubeMove.back);
+                    cube.move(dust.rubikube.CubeMove.back);
                 break;
         }
     }

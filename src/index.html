@@ -26,42 +26,66 @@
             <div class="help-bar">
                 With focus on the cube, try:<br/>
                 <strong>l, r, u, d, f, b</strong> - rotates the corresponding faces of the cube clockwise.<br/>
-                <strong>Shift + (l, r, u, d, f, b)</strong> - rotates the faces counterclockwise,<br/>
+                <strong>shift + (l, r, u, d, f, b)</strong> - rotates the faces counterclockwise,<br/>
                 <strong>left, right, up, down arrows</strong> - rotates the whole cube.
             </div>
 
             <div class="control-bar">
-                <table id="faceMoveButtons">
-                    <tr>
-                        <td></td>
-                        <td><input id="buttonU" class="button cw" type="button" value="U"/></td>
-                        <td><input id="buttonUi" class="button ccw" type="button" value="U'"/></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><input id="buttonL" class="button cw" type="button" value="L"/></td>
-                        <td><input id="buttonF" class="button cw" type="button" value="F"/></td>
-                        <td><input id="buttonB" class="button cw" type="button" value="B"/></td>
-                        <td><input id="buttonR" class="button cw" type="button" value="R"/></td>
-                    </tr>
-                    <tr>
-                        <td><input id="buttonLi" class="button ccw" type="button" value="L'"/></td>
-                        <td><input id="buttonFi" class="button ccw" type="button" value="F'"/></td>
-                        <td><input id="buttonBi" class="button ccw" type="button" value="B'"/></td>
-                        <td><input id="buttonRi" class="button ccw" type="button" value="R'"/></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input id="buttonD" class="button cw" type="button" value="D"/></td>
-                        <td><input id="buttonDi" class="button ccw" type="button" value="D'"/></td>
-                        <td></td>
-                    </tr>
-                </table>
+                <div class="control-bar-cell-2">
+                    <table id="faceRotateButtons">
+                        <tr>
+                            <td></td>
+                            <td><input id="buttonU" class="button button-cw" type="button" value="U"/></td>
+                            <td><input id="buttonUi" class="button button-ccw" type="button" value="U'"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input id="buttonL" class="button button-cw" type="button" value="L"/></td>
+                            <td><input id="buttonF" class="button button-cw" type="button" value="F"/></td>
+                            <td><input id="buttonB" class="button button-cw" type="button" value="B"/></td>
+                            <td><input id="buttonR" class="button button-cw" type="button" value="R"/></td>
+                        </tr>
+                        <tr>
+                            <td><input id="buttonLi" class="button button-ccw" type="button" value="L'"/></td>
+                            <td><input id="buttonFi" class="button button-ccw" type="button" value="F'"/></td>
+                            <td><input id="buttonBi" class="button button-ccw" type="button" value="B'"/></td>
+                            <td><input id="buttonRi" class="button button-ccw" type="button" value="R'"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input id="buttonD" class="button button-cw" type="button" value="D"/></td>
+                            <td><input id="buttonDi" class="button button-ccw" type="button" value="D'"/></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="control-bar-cell-2">
+                    <table id="cubeRotateButtons">
+                        <tr>
+                            <td></td>
+                            <td><input id="buttonCubeUp" class="button" type="button" value="up"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><input id="buttonCubeLeft" class="button" type="button" value="left"/></td>
+                            <td></td>
+                            <td><input id="buttonCubeRight" class="button" type="button" value="right"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input id="buttonCubeDown" class="button" type="button" value="down"/></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clear-float"></div>
             </div>
 
             <div class="control-bar">
                 <input id="buttonScramble" class="button" type="button" value="Scramble"/>
                 <input id="buttonUndo" class="button" type="button" value="Undo"/>
+                <input id="buttonExport" class="button" type="button" value="Export"/>
+                <input id="buttonImport" class="button" type="button" value="Import"/>
                 <input id="buttonReset" class="button" type="button" value="Reset"/>
             </div>
 

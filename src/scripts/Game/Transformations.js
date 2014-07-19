@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.Transformations = function () {
+dust.rubikube.Transformations = function () {
     var transformations;
 
     var left = "1-3;2-6;3-9;4-2;6-8;7-1;8-4;9-7;" +
@@ -141,22 +141,22 @@ lu.rubikube.Transformations = function () {
 
     (function initialize() {
         transformations = [];
-        transformations[lu.rubikube.CubeMove.left] = parseTransformation(left);
-        transformations[lu.rubikube.CubeMove.leftInverse] = parseTransformation(leftInverse);
-        transformations[lu.rubikube.CubeMove.right] = parseTransformation(right);
-        transformations[lu.rubikube.CubeMove.rightInverse] = parseTransformation(rightInverse);
-        transformations[lu.rubikube.CubeMove.up] = parseTransformation(up);
-        transformations[lu.rubikube.CubeMove.upInverse] = parseTransformation(upInverse);
-        transformations[lu.rubikube.CubeMove.down] = parseTransformation(down);
-        transformations[lu.rubikube.CubeMove.downInverse] = parseTransformation(downInverse);
-        transformations[lu.rubikube.CubeMove.front] = parseTransformation(front);
-        transformations[lu.rubikube.CubeMove.frontInverse] = parseTransformation(frontInverse);
-        transformations[lu.rubikube.CubeMove.back] = parseTransformation(back);
-        transformations[lu.rubikube.CubeMove.backInverse] = parseTransformation(backInverse);
+        transformations[dust.rubikube.CubeMove.left] = parseTransformation(left);
+        transformations[dust.rubikube.CubeMove.leftInverse] = parseTransformation(leftInverse);
+        transformations[dust.rubikube.CubeMove.right] = parseTransformation(right);
+        transformations[dust.rubikube.CubeMove.rightInverse] = parseTransformation(rightInverse);
+        transformations[dust.rubikube.CubeMove.up] = parseTransformation(up);
+        transformations[dust.rubikube.CubeMove.upInverse] = parseTransformation(upInverse);
+        transformations[dust.rubikube.CubeMove.down] = parseTransformation(down);
+        transformations[dust.rubikube.CubeMove.downInverse] = parseTransformation(downInverse);
+        transformations[dust.rubikube.CubeMove.front] = parseTransformation(front);
+        transformations[dust.rubikube.CubeMove.frontInverse] = parseTransformation(frontInverse);
+        transformations[dust.rubikube.CubeMove.back] = parseTransformation(back);
+        transformations[dust.rubikube.CubeMove.backInverse] = parseTransformation(backInverse);
 
-        transformations[lu.rubikube.CubeMove.turnLeft] = parseTransformation(turnLeft);
-        transformations[lu.rubikube.CubeMove.turnRight] = parseTransformation(turnRight);
-        transformations[lu.rubikube.CubeMove.turnUp] = parseTransformation(turnUp);
-        transformations[lu.rubikube.CubeMove.turnDown] = parseTransformation(turnDown);
+        transformations[dust.rubikube.CubeMove.turnLeft] = parseTransformation(turnLeft);
+        transformations[dust.rubikube.CubeMove.turnRight] = parseTransformation(turnRight);
+        transformations[dust.rubikube.CubeMove.turnUp] = parseTransformation(turnUp);
+        transformations[dust.rubikube.CubeMove.turnDown] = parseTransformation(turnDown);
     }());
 };

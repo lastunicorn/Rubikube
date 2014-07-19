@@ -30,51 +30,67 @@
     }
 
     function onButtonLClicked() {
-        moveCube(lu.rubikube.CubeMove.left);
+        moveCube(dust.rubikube.CubeMove.left);
     }
 
     function onButtonLiClicked() {
-        moveCube(lu.rubikube.CubeMove.leftInverse);
+        moveCube(dust.rubikube.CubeMove.leftInverse);
     }
 
     function onButtonRClicked() {
-        moveCube(lu.rubikube.CubeMove.right);
+        moveCube(dust.rubikube.CubeMove.right);
     }
 
     function onButtonRiClicked() {
-        moveCube(lu.rubikube.CubeMove.rightInverse);
+        moveCube(dust.rubikube.CubeMove.rightInverse);
     }
 
     function onButtonUClicked() {
-        moveCube(lu.rubikube.CubeMove.up);
+        moveCube(dust.rubikube.CubeMove.up);
     }
 
     function onButtonUiClicked() {
-        moveCube(lu.rubikube.CubeMove.upInverse);
+        moveCube(dust.rubikube.CubeMove.upInverse);
     }
 
     function onButtonDClicked() {
-        moveCube(lu.rubikube.CubeMove.down);
+        moveCube(dust.rubikube.CubeMove.down);
     }
 
     function onButtonDiClicked() {
-        moveCube(lu.rubikube.CubeMove.downInverse);
+        moveCube(dust.rubikube.CubeMove.downInverse);
     }
 
     function onButtonFClicked() {
-        moveCube(lu.rubikube.CubeMove.front);
+        moveCube(dust.rubikube.CubeMove.front);
     }
 
     function onButtonFiClicked() {
-        moveCube(lu.rubikube.CubeMove.frontInverse);
+        moveCube(dust.rubikube.CubeMove.frontInverse);
     }
 
     function onButtonBClicked() {
-        moveCube(lu.rubikube.CubeMove.back);
+        moveCube(dust.rubikube.CubeMove.back);
     }
 
     function onButtonBiClicked() {
-        moveCube(lu.rubikube.CubeMove.backInverse);
+        moveCube(dust.rubikube.CubeMove.backInverse);
+    }
+
+    function onButtonCubeLeftClicked() {
+        moveCube(dust.rubikube.CubeMove.turnLeft);
+    }
+
+    function onButtonCubeRightClicked() {
+        moveCube(dust.rubikube.CubeMove.turnRight);
+    }
+
+    function onButtonCubeUpClicked() {
+        moveCube(dust.rubikube.CubeMove.turnUp);
+    }
+
+    function onButtonCubeDownClicked() {
+        moveCube(dust.rubikube.CubeMove.turnDown);
     }
 
     function onButtonScrambleClicked() {
@@ -93,16 +109,35 @@
         refreshHistory();
     }
 
+    function onButtonExportClick() {
+        var text = $("#historyValue").text();
+        text = $.trim(text);
+
+        if (text.length == 0)
+            alert("No move was performed.");
+        else
+            prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    }
+
+    function onButtonImportClick() {
+        var text = window.prompt("Copy to clipboard: Ctrl+C, Enter", "");
+
+        var moves = dust.rubikube.CubeMove.parse(text);
+
+        cube.reset();
+        cube.move(moves);
+    }
+
     function scramble() {
-        var moves = lu.rubikube.CubeMove.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
+        var moves = dust.rubikube.CubeMove.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
         cube.move(moves);
     }
 
     $(function () {
-        var faceColors = new lu.rubikube.CubeFaceColors();
-        cube = new lu.rubikube.Cube(faceColors);
+        var faceColors = new dust.rubikube.CubeFaceColors();
+        cube = new dust.rubikube.Cube(faceColors);
 
-        cubeUserControl = new lu.rubikube.CubeUserControl("#cubeContainer", cube);
+        cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", cube);
 
         cube.cubeChanged.subscribe(onCubeChanged);
 
@@ -142,6 +177,18 @@
         var $buttonBi = $("#buttonBi");
         $buttonBi.click(onButtonBiClicked);
 
+        var $buttonCubeLeft = $("#buttonCubeLeft");
+        $buttonCubeLeft.click(onButtonCubeLeftClicked);
+
+        var $buttonCubeRight = $("#buttonCubeRight");
+        $buttonCubeRight.click(onButtonCubeRightClicked);
+
+        var $buttonCubeUp = $("#buttonCubeUp");
+        $buttonCubeUp.click(onButtonCubeUpClicked);
+
+        var $buttonCubeDown = $("#buttonCubeDown");
+        $buttonCubeDown.click(onButtonCubeDownClicked);
+
         var $buttonScramble = $("#buttonScramble");
         $buttonScramble.click(onButtonScrambleClicked);
 
@@ -150,6 +197,12 @@
 
         var $buttonReset = $("#buttonReset");
         $buttonReset.click(onButtonResetClicked);
+
+        var $buttonExport = $("#buttonExport");
+        $buttonExport.click(onButtonExportClick);
+
+        var $buttonImport = $("#buttonImport");
+        $buttonImport.click(onButtonImportClick);
 
         $history = $("#historyValue");
     });

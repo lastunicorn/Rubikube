@@ -14,15 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.Cube = function (faceColors) {
+dust.rubikube.Cube = function (faceColors) {
     var state;
     var transformations;
     var history = [];
 
-    var cubeChangedEvent = new lu.Event();
+    var cubeChangedEvent = new dust.Event();
     this.cubeChanged = cubeChangedEvent.client;
 
     this.move = function (moveId) {
@@ -47,7 +47,7 @@ lu.rubikube.Cube = function (faceColors) {
             move: performMove
         };
 
-        var moveCommand = new lu.rubikube.MoveCommand(cubeCommander, moveId);
+        var moveCommand = new dust.rubikube.MoveCommand(cubeCommander, moveId);
         history.push(moveCommand);
         moveCommand.execute();
     }
@@ -79,24 +79,24 @@ lu.rubikube.Cube = function (faceColors) {
 
     function calculateFace(cellNumber) {
         if (cellNumber >= 1 && cellNumber <= 9)
-            return lu.rubikube.CubeFace.left;
+            return dust.rubikube.CubeFace.left;
 
         if (cellNumber >= 10 && cellNumber <= 18)
-            return lu.rubikube.CubeFace.right;
+            return dust.rubikube.CubeFace.right;
 
         if (cellNumber >= 19 && cellNumber <= 27)
-            return lu.rubikube.CubeFace.up;
+            return dust.rubikube.CubeFace.up;
 
         if (cellNumber >= 28 && cellNumber <= 36)
-            return lu.rubikube.CubeFace.down;
+            return dust.rubikube.CubeFace.down;
 
         if (cellNumber >= 37 && cellNumber <= 45)
-            return lu.rubikube.CubeFace.front;
+            return dust.rubikube.CubeFace.front;
 
         if (cellNumber >= 46 && cellNumber <= 54)
-            return lu.rubikube.CubeFace.back;
+            return dust.rubikube.CubeFace.back;
 
-        return lu.rubikube.CubeFace.none;
+        return dust.rubikube.CubeFace.none;
     }
 
     this.toColors = function () {
@@ -138,7 +138,7 @@ lu.rubikube.Cube = function (faceColors) {
     }
 
     (function initialize() {
-        transformations = new lu.rubikube.Transformations();
+        transformations = new dust.rubikube.Transformations();
 
         state = [];
         reset();

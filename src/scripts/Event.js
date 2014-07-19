@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
+window.dust = window.dust || {};
 
 /**
  * Keeps a list of functions and calls them one by one when the event is raised.
  *
  * @constructor
  */
-lu.Event = function() {
+dust.Event = function() {
 
     var eventHandlers = [];
 
@@ -59,7 +59,7 @@ lu.Event = function() {
 
     /**
      * Gets an object containing the subscribe and unsubscribe methods. This is
-     * useful to expose to subscribers instead of exposing the whole {lu.Event}
+     * useful to expose to subscribers instead of exposing the whole {dust.Event}
      * object.
      */
     Object.defineProperty(this, "client", {

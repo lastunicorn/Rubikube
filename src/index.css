@@ -30,15 +30,9 @@ body {
 	margin: 10px 0 0;
 }
 
-#historyContainer {
-	font-size: 12px;
-	background: #666;
-	margin: 20px 0 0;
-	padding: 4px;
-}
-
 .cube {
-	background: #111;
+	background: #101010;/**/
+    /*background: #e0e0e0;/**/
 	border: 15px solid #000;
 	padding: 10px;
 	margin: 0 auto;
@@ -46,7 +40,8 @@ body {
 }
 
 .cube:focus {
-    background: #171717;
+    background: #171717;/**/
+    /*background: #f0f0f0;/**/
     border-color: #0a0a0a;
     outline: none;
 }
@@ -55,7 +50,8 @@ body {
 	width: 37px;
 	height: 37px;
 	border-radius: 3px;
-	border: 2px solid #ffffff;
+	border: 2px solid #ffffff;/**/
+    /*border: 3px solid #000;/**/
 	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
@@ -96,33 +92,42 @@ body {
 	background: linear-gradient(to top, #333333 0%, #000000);
 }
 
-.button.cw {
+.button.button-cw {
 	background: linear-gradient(to bottom, #333333 0%, #000000);
 }
 
-.button.cw:hover {
+.button.button-cw:hover {
 	background: linear-gradient(to bottom, #444444 0%, #111111);
 }
 
-.button.cw:active {
+.button.button-cw:active {
 	background: linear-gradient(to top, #333333 0%, #000000);
 }
 
-.button.ccw {
+.button.button-ccw {
 	background: linear-gradient(to bottom, #333344 0%, #000011);
 }
 
-.button.ccw:hover {
+.button.button-ccw:hover {
 	background: linear-gradient(to bottom, #444455 0%, #111122);
 }
 
-.button.ccw:active {
+.button.button-ccw:active {
 	background: linear-gradient(to top, #333344 0%, #000011);
 }
 
 .control-bar {
 	margin: 10px auto;
 	text-align: center;
+}
+
+.clear-float {
+    clear: both;
+}
+
+.control-bar-cell-2 {
+    width: 50%;
+    float: left;
 }
 
 .help-bar {
@@ -136,6 +141,42 @@ body {
      color: #f0f0f0;
  }
 
-#faceMoveButtons {
-	margin: 0 auto;
+#faceRotateButtons, #cubeRotateButtons {
+	margin: 0 auto;/**/
+}
+
+/* History
+--------------------------------------------*/
+
+#historyContainer {
+    font-size: 12px;
+    background: #666;
+    margin: 20px 0 0;
+    padding: 4px;
+    position: relative;
+}
+
+#historyContainer #textBoxHistory {
+    display: none;
+}
+
+#historyButtons {
+    display: inline;
+}
+
+#historyButtons button {
+    padding: 0;
+    font-size: inherit;
+    border-radius: 3px;
+    color: #ffffff;
+    border: 1px solid #000000;
+    background: linear-gradient(to bottom, #333333 0%, #000000);
+}
+
+#historyButtons button:hover {
+    background: linear-gradient(to bottom, #444444 0%, #111111);
+}
+
+#historyButtons button:active {
+    background: linear-gradient(to top, #333333 0%, #000000);
 }

@@ -14,28 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-window.lu = window.lu || {};
-lu.rubikube = lu.rubikube || {};
+window.dust = window.dust || {};
+dust.rubikube = dust.rubikube || {};
 
-lu.rubikube.CubeFaceColors = function () {
+dust.rubikube.CubeFaceColors = function () {
     this.getColorFor = function (cubeFaceId) {
         switch (cubeFaceId) {
-            case lu.rubikube.CubeFace.left:
+            case dust.rubikube.CubeFace.left:
                 return "#ff9933"; // orange
 
-            case lu.rubikube.CubeFace.right:
+            case dust.rubikube.CubeFace.right:
                 return "#ff3300"; // red
 
-            case lu.rubikube.CubeFace.up:
+            case dust.rubikube.CubeFace.up:
                 return "#ffff66"; // yellow
 
-            case lu.rubikube.CubeFace.down:
+            case dust.rubikube.CubeFace.down:
                 return "#e0e0e0"; // white
 
-            case lu.rubikube.CubeFace.front:
+            case dust.rubikube.CubeFace.front:
                 return "#0066cc"; // blue
 
-            case lu.rubikube.CubeFace.back:
+            case dust.rubikube.CubeFace.back:
                 return "#00c000"; // green
 
             default:
