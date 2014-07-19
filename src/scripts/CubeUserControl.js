@@ -20,31 +20,24 @@ lu.rubikube = lu.rubikube || {};
 lu.rubikube.CubeUserControl = function (parentSelector, cube) {
     var $parent;
     var $cube;
-    var $faceUCells;
-    var $faceLCells;
-    var $faceFCells;
-    var $faceRCells;
-    var $faceBCells;
-    var $faceDCells;
+
+    var faceL;
+    var faceR;
+    var faceU;
+    var faceD;
+    var faceF;
+    var faceB;
 
     function refreshCube() {
         var cellColors = cube.toColors();
         var cellValues = cube.toValues();
 
-        refreshCubeFace($faceLCells, cellColors, cellValues, 0);
-        refreshCubeFace($faceRCells, cellColors, cellValues, 9);
-        refreshCubeFace($faceUCells, cellColors, cellValues, 18);
-        refreshCubeFace($faceDCells, cellColors, cellValues, 27);
-        refreshCubeFace($faceFCells, cellColors, cellValues, 36);
-        refreshCubeFace($faceBCells, cellColors, cellValues, 45);
-    }
-
-    function refreshCubeFace($faceCells, cellColors, cellValues, offset) {
-        for (var i = 0; i < 9; i++) {
-            var $cell = $($faceCells.get(i));
-            $cell.css("background", cellColors[offset + i]);
-            //$cell.text(cellValues[offset + i + 1]);
-        }
+        faceL.refreshCubeFace(cellColors, cellValues, 0);
+        faceR.refreshCubeFace(cellColors, cellValues, 9);
+        faceU.refreshCubeFace(cellColors, cellValues, 18);
+        faceD.refreshCubeFace(cellColors, cellValues, 27);
+        faceF.refreshCubeFace(cellColors, cellValues, 36);
+        faceB.refreshCubeFace(cellColors, cellValues, 45);
     }
 
     function onCubeChanged() {
@@ -52,75 +45,68 @@ lu.rubikube.CubeUserControl = function (parentSelector, cube) {
     }
 
     function createUi() {
-        var $faceU = createFace("faceU");
-        var $faceL = createFace("faceL");
-        var $faceF = createFace("faceF");
-        var $faceR = createFace("faceR");
-        var $faceB = createFace("faceB");
-        var $faceD = createFace("faceD");
 
-        $faceUCells = $faceU.find("td");
-        $faceLCells = $faceL.find("td");
-        $faceFCells = $faceF.find("td");
-        $faceRCells = $faceR.find("td");
-        $faceBCells = $faceB.find("td");
-        $faceDCells = $faceD.find("td");
-
-        var $tr1 = $("<tr/>")
-            .append(createCell())
-            .append(createCell($faceU))
-            .append(createCell())
-            .append(createCell());
-
-        var $tr2 = $("<tr/>")
-            .append(createCell($faceL))
-            .append(createCell($faceF))
-            .append(createCell($faceR))
-            .append(createCell($faceB));
-
-        var $tr3 = $("<tr/>")
-            .append(createCell())
-            .append(createCell($faceD))
-            .append(createCell())
-            .append(createCell());
-
-        $cube = $("<table/>")
+        $cube = createTable(3, 4);
+        $cube
             .addClass("cube")
             .attr("tabindex", "1")
-            .append($tr1)
-            .append($tr2)
-            .append($tr3);
+            .mouseenter(onMouseEnter);
+
+        var $cubeCells = $cube.find("td");
+
+        faceL.setParent($cubeCells.get(4));
+        faceR.setParent($cubeCells.get(6));
+        faceU.setParent($cubeCells.get(1));
+        faceD.setParent($cubeCells.get(9));
+        faceF.setParent($cubeCells.get(5));
+        faceB.setParent($cubeCells.get(7));
 
         $parent.append($cube);
     }
 
-    function createCell($content) {
-        return $("<td/>")
-            .append($content);
+    function onMouseEnter() {
+        $cube.focus();
     }
 
-    function createFace(className) {
-        var $table = $("<table/>")
-            .addClass("cube-face")
-            .addClass(className);
+    function createTable(rowCount, columnCount) {
+        var sb = [];
 
-        for (var i = 0; i < 3; i++)
-            $table.append(createFaceRow());
+        sb.push("<table>");
 
-        return $table;
+        for (var i = 0; i < rowCount; i++) {
+            sb.push("<tr>");
+
+            for (var j = 0; j < columnCount; j++)
+                sb.push("<td></td>");
+
+            sb.push("</tr>");
+        }
+
+        sb.push("</table>");
+
+        return $(sb.join(''));
     }
 
-    function createFaceRow() {
-        var $tr = $("<tr/>");
-
-        for (var i = 0; i < 3; i++)
-            $tr.append($("<td/>"));
-
-        return $tr;
-    }
-
-    function onKeyDown(ev) {
+    function onKeyup(ev) {
         ev.preventDefault();
+
+        faceL.keyUp(ev);
+        faceR.keyUp(ev);
+        faceU.keyUp(ev);
+        faceD.keyUp(ev);
+        faceF.keyUp(ev);
+        faceB.keyUp(ev);
+    }
+
+    function onKeydown(ev) {
+        ev.preventDefault();
+
+        faceL.keyDown(ev);
+        faceR.keyDown(ev);
+        faceU.keyDown(ev);
+        faceD.keyDown(ev);
+        faceF.keyDown(ev);
+        faceB.keyDown(ev);
 
         switch (ev.which) {
             case 76: // l
@@ -189,11 +175,19 @@ lu.rubikube.CubeUserControl = function (parentSelector, cube) {
     (function initialize() {
         $parent = $(parentSelector);
 
+        faceL = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.left);
+        faceR = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.right);
+        faceU = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.up);
+        faceD = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.down);
+        faceF = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.front);
+        faceB = new lu.rubikube.CubeFaceUserControl(cube, lu.rubikube.CubeFace.back);
+
         createUi();
 
         cube.cubeChanged.subscribe(onCubeChanged);
 
-        $cube.keydown(onKeyDown);
+        $cube.keydown(onKeydown);
+        $cube.keyup(onKeyup);
 
         refreshCube();
     }());

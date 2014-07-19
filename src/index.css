@@ -52,15 +52,25 @@ body {
 }
 
 .cube .cube-face td {
-	width: 35px;
-	height: 35px;
-	background: red;
+	width: 37px;
+	height: 37px;
 	border-radius: 3px;
 	border: 2px solid #ffffff;
 	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
 	color: #888;
+    padding: 0;
+}
+
+.cell-cw {
+    background: url(images/rotate-cw.png) center center;
+    background-size: 33px 33px;
+}
+
+.cell-ccw {
+    background: url(images/rotate-ccw.png) center center;
+    background-size: 33px 33px;
 }
 
 .button {
