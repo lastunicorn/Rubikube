@@ -3,8 +3,17 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Rubik</title>
+
+        <!-- css -->
+
+        <link rel="stylesheet" href="libraries/jQueryUI/jquery-ui.min.css"/>
         <link rel="stylesheet" href="index.css"/>
+
+        <!-- javascript -->
+
         <script type="text/javascript" src="libraries/jQuery/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="libraries/jQueryUI/jquery-ui.min.js"></script>
+
         <script type="text/javascript" src="scripts/Event.js"></script>
         <script type="text/javascript" src="scripts/Game/MoveCommand.js"></script>
         <script type="text/javascript" src="scripts/Game/CubeMove.js"></script>
@@ -16,6 +25,7 @@
         <script type="text/javascript" src="scripts/CubeFaceUserControl.js"></script>
         <script type="text/javascript" src="scripts/CubeUserControl.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
+
     </head>
     <body>
         <div id="content">
@@ -23,14 +33,61 @@
 
             <div id="cubeContainer"></div>
 
-            <div class="help-bar">
-                With focus on the cube, try:<br/>
-                <strong>l, r, u, d, f, b</strong> - rotates the corresponding faces of the cube clockwise.<br/>
-                <strong>shift + (l, r, u, d, f, b)</strong> - rotates the faces counterclockwise,<br/>
-                <strong>left, right, up, down arrows</strong> - rotates the whole cube.
+            <div id="dialogHelp" title="Help">
+                <div class="observation">
+                    <strong>Obs!</strong> First of all be sure the focus is on the Rubik's cube.
+                </div>
+                <div class="section-title">using letters</div>
+                <table>
+                    <tr>
+                        <td>face rotation clockwise:</td>
+                        <td><strong>l, r, u, d, f, b</strong></td>
+                    </tr>
+                    <tr>
+                        <td>face rotation counter-clockwise:</td>
+                        <td><strong>shift + (l, r, u, d, f, b)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>cube rotation:</td>
+                        <td><strong>left, right, up, down arrows</strong></td>
+                    </tr>
+                </table>
+
+                <div class="section-title">using numeric pad</div>
+                <table>
+                    <tr>
+                        <td>face rotation clockwise:</td>
+                        <td><strong>4, 6, 8, 2, 5, 9</strong></td>
+                    </tr>
+                    <tr>
+                        <td>face rotation counter-clockwise:</td>
+                        <td><strong>shift + (4, 6, 8, 2, 5, 9)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>cube rotation:</td>
+                        <td><strong>ctrl + (4, 6, 8, 2)</strong></td>
+                    </tr>
+                </table>
+
+                <div class="section-title">using mouse</div>
+                <table>
+                    <tr>
+                        <td>face rotation clockwise:</td>
+                        <td><strong>click the center cell</strong></td>
+                    </tr>
+                    <tr>
+                        <td>face rotation counter-clockwise:</td>
+                        <td><strong>shift + (click the center cell)</strong> or<br/>
+                            <strong>right click the center cell</strong></td>
+                    </tr>
+                    <tr>
+                        <td>cube rotation:</td>
+                        <td><strong>none</strong></td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="control-bar">
+            <div id="dialogControls" title="Controls">
                 <div class="control-bar-cell-2">
                     <table id="faceRotateButtons">
                         <tr>
@@ -84,9 +141,14 @@
             <div class="control-bar">
                 <input id="buttonScramble" class="button" type="button" value="Scramble"/>
                 <input id="buttonUndo" class="button" type="button" value="Undo"/>
+                <input id="buttonReset" class="button" type="button" value="Reset"/>
+            </div>
+
+            <div class="control-bar">
                 <input id="buttonExport" class="button" type="button" value="Export"/>
                 <input id="buttonImport" class="button" type="button" value="Import"/>
-                <input id="buttonReset" class="button" type="button" value="Reset"/>
+                <input id="buttonControls" class="button" type="button" value="Controls"/>
+                <input id="buttonHelp" class="button" type="button" value="?"/>
             </div>
 
             <div id="historyContainer">

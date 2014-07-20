@@ -22,9 +22,22 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
     var $face;
     var $faceCells;
     var $centerCell;
-    var isMouseOverCenter = false;
+    var $leftCell;
+    var $rightCell;
+    var $upCell;
+    var $downCell;
+    var isMouseOverCenterCell = false;
+    var isMouseOverLeftCell = false;
+    var isMouseOverRightCell = false;
+    var isMouseOverUpCell = false;
+    var isMouseOverDownCell = false;
     var isShiftPressed = false;
     var isRightMouseButtonPressed = false;
+    var allowTurnCube = false;
+
+    this.allowTurnCube = function (value) {
+        allowTurnCube = value;
+    }
 
     this.setParent = function (parentSelector) {
         $parent = $(parentSelector);
@@ -45,10 +58,34 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         $faceCells = $face.find("td");
 
         $centerCell = $($faceCells.get(4))
-            .mousedown(onFaceCenterMouseDown)
-            .mouseup(onFaceCenterMouseUp)
-            .mouseenter(onFaceCenterMouseEnter)
-            .mouseout(onFaceCenterMouseOut)
+            .mousedown(onCellCenterMouseDown)
+            .mouseup(onCellCenterMouseUp)
+            .mouseenter(onCellCenterMouseEnter)
+            .mouseout(onCellCenterMouseOut)
+            .on('contextmenu', onContextMenu);
+
+        $leftCell = $($faceCells.get(3))
+            .mousedown(onCellLeftMouseDown)
+            .mouseenter(onCellLeftMouseEnter)
+            .mouseout(onCellLeftMouseOut)
+            .on('contextmenu', onContextMenu);
+
+        $rightCell = $($faceCells.get(5))
+            .mousedown(onCellRightMouseDown)
+            .mouseenter(onCellRightMouseEnter)
+            .mouseout(onCellRightMouseOut)
+            .on('contextmenu', onContextMenu);
+
+        $upCell = $($faceCells.get(1))
+            .mousedown(onCellUpMouseDown)
+            .mouseenter(onCellUpMouseEnter)
+            .mouseout(onCellUpMouseOut)
+            .on('contextmenu', onContextMenu);
+
+        $downCell = $($faceCells.get(7))
+            .mousedown(onCellDownMouseDown)
+            .mouseenter(onCellDownMouseEnter)
+            .mouseout(onCellDownMouseOut)
             .on('contextmenu', onContextMenu);
     }
 
@@ -62,7 +99,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
     }
 
     function refreshArrow() {
-        if (isMouseOverCenter) {
+        if (isMouseOverCenterCell) {
             if (isShiftPressed || isRightMouseButtonPressed) {
                 $centerCell.addClass("cell-ccw");
                 $centerCell.removeClass("cell-cw");
@@ -75,6 +112,30 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         else {
             $centerCell.removeClass("cell-cw");
             $centerCell.removeClass("cell-ccw");
+        }
+
+        if (isMouseOverLeftCell) {
+            $leftCell.addClass("cell-left");
+        } else {
+            $leftCell.removeClass("cell-left");
+        }
+
+        if (isMouseOverRightCell) {
+            $rightCell.addClass("cell-right");
+        } else {
+            $rightCell.removeClass("cell-right");
+        }
+
+        if (isMouseOverUpCell) {
+            $upCell.addClass("cell-up");
+        } else {
+            $upCell.removeClass("cell-up");
+        }
+
+        if (isMouseOverDownCell) {
+            $downCell.addClass("cell-down");
+        } else {
+            $downCell.removeClass("cell-down");
         }
     }
 
@@ -96,7 +157,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         ev.preventDefault();
     }
 
-    function onFaceCenterMouseUp(ev) {
+    function onCellCenterMouseUp(ev) {
         ev.preventDefault();
 
         if (ev.which === 3) {
@@ -105,7 +166,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         }
     }
 
-    function onFaceCenterMouseDown(ev) {
+    function onCellCenterMouseDown(ev) {
         ev.preventDefault();
 
         if (ev.which === 3) {
@@ -158,14 +219,114 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         }
     }
 
-    function onFaceCenterMouseEnter() {
-        isMouseOverCenter = true;
+    function onCellCenterMouseEnter() {
+        isMouseOverCenterCell = true;
         refreshArrow();
     }
 
-    function onFaceCenterMouseOut() {
-        isMouseOverCenter = false;
+    function onCellCenterMouseOut() {
+        isMouseOverCenterCell = false;
         refreshArrow();
+    }
+
+    function onCellLeftMouseEnter() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverLeftCell = true;
+        refreshArrow();
+    }
+
+    function onCellLeftMouseOut() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverLeftCell = false;
+        refreshArrow();
+    }
+
+    function onCellLeftMouseDown(ev) {
+        ev.preventDefault();
+
+        if (!allowTurnCube)
+            return;
+
+        cube.move(dust.rubikube.CubeMove.turnLeft);
+    }
+
+    function onCellRightMouseEnter() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverRightCell = true;
+        refreshArrow();
+    }
+
+    function onCellRightMouseOut() {
+        isMouseOverRightCell = false;
+        if (!allowTurnCube)
+            return;
+
+        refreshArrow();
+    }
+
+    function onCellRightMouseDown(ev) {
+        ev.preventDefault();
+
+        if (!allowTurnCube)
+            return;
+
+        cube.move(dust.rubikube.CubeMove.turnRight);
+    }
+
+    function onCellUpMouseEnter() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverUpCell = true;
+        refreshArrow();
+    }
+
+    function onCellUpMouseOut() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverUpCell = false;
+        refreshArrow();
+    }
+
+    function onCellUpMouseDown(ev) {
+        ev.preventDefault();
+
+        if (!allowTurnCube)
+            return;
+
+        cube.move(dust.rubikube.CubeMove.turnUp);
+    }
+
+    function onCellDownMouseEnter() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverDownCell = true;
+        refreshArrow();
+    }
+
+    function onCellDownMouseOut() {
+        if (!allowTurnCube)
+            return;
+
+        isMouseOverDownCell = false;
+        refreshArrow();
+    }
+
+    function onCellDownMouseDown(ev) {
+        ev.preventDefault();
+
+        if (!allowTurnCube)
+            return;
+
+        cube.move(dust.rubikube.CubeMove.turnDown);
     }
 
     function createFaceRow() {

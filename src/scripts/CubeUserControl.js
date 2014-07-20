@@ -61,6 +61,8 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
         faceF.setParent($cubeCells.get(5));
         faceB.setParent($cubeCells.get(7));
 
+        faceF.allowTurnCube(true);
+
         $parent.append($cube);
     }
 

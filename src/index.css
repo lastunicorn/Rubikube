@@ -69,6 +69,31 @@ body {
     background-size: 33px 33px;
 }
 
+.cell-left {
+    background: url(images/left.png) center center;
+    background-size: 33px 33px;
+}
+
+.cell-right {
+    background: url(images/right.png) center center;
+    background-size: 33px 33px;
+}
+
+.cell-up {
+    background: url(images/up.png) center center;
+    background-size: 33px 33px;
+}
+
+.cell-down {
+    background: url(images/down.png) center center;
+    background-size: 33px 33px;
+}
+
+.observation {
+    margin: 3px 0;
+    font-style: italic;
+}
+
 .button {
 	font-size: 18px;
 	color: #ffffff;
@@ -130,19 +155,43 @@ body {
     float: left;
 }
 
-.help-bar {
-    margin: 10px auto;
-    font-size: 11px;
-    text-align: center;
-    color: #aaa;
-}
-
-.help-bar strong {
-     color: #f0f0f0;
- }
-
 #faceRotateButtons, #cubeRotateButtons {
 	margin: 0 auto;/**/
+}
+
+#dialogHelp {
+    color: #aaaaaa;
+}
+
+#dialogHelp .section-title {
+    margin: 10px 0;
+    font-size: 1.1em;
+    text-decoration: underline;
+}
+
+#dialogHelp strong {
+    color: #f0f0f0;
+}
+
+#dialogHelp table {
+    width: 100%;
+    border: 1px solid #333;
+}
+
+#dialogHelp table tr:nth-child(odd)  {
+    background-color: #222;
+}
+
+#dialogHelp table tr td:first-child {
+    white-space: nowrap;
+}
+
+#dialogHelp table tr td {
+    padding: 0 5px;
+}
+
+#dialogControls {
+    text-align: center;
 }
 
 /* History
@@ -180,3 +229,50 @@ body {
 #historyButtons button:active {
     background: linear-gradient(to top, #333333 0%, #000000);
 }
+
+/* jQuery UI
+--------------------------------------------*/
+
+.ui-dialog {
+    font-size: 14px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    font-size: 1.15em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    font-size: 1.15em;
+    padding: 0.3em;
+}
+
+
+.ui-dialog .ui-dialog-buttonpane button {
+    margin: 0.2em 0.4em 0.2em 0;
+    border-radius: 3px;
+}
+
+/*
+.ui-button {
+    font-size: 18px;
+    color: #ffffff;
+    padding: 8px 19px;
+    border-radius: 3px;
+    border: 1px solid #000000;
+    background: linear-gradient(to bottom, #333333 0%, #000000);
+    box-shadow:
+        0px 1px 1px rgba(000,000,000,0.5),
+        inset 0px 0px 1px rgba(255,255,255,1);
+    text-shadow:
+        0px -1px 0px rgba(000,000,000,0.7),
+        0px 1px 0px rgba(255,255,255,0.3);
+}
+
+.ui-button:hover {
+    background: linear-gradient(to bottom, #444444 0%, #111111);
+}
+
+.ui-button:active {
+    background: linear-gradient(to top, #333333 0%, #000000);
+}
+*/

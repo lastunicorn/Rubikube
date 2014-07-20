@@ -19,6 +19,8 @@
     var cubeUserControl;
 
     var $history;
+    var $dialogHelp;
+    var $dialogControls;
 
     function refreshHistory() {
         var text = cube.getHistory();
@@ -128,6 +130,14 @@
         cube.move(moves);
     }
 
+    function onButtonHelpClick() {
+        $dialogHelp.dialog("open");
+    }
+
+    function onButtonControlsClick() {
+        $dialogControls.dialog("open");
+    }
+
     function scramble() {
         var moves = dust.rubikube.CubeMove.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
         cube.move(moves);
@@ -204,7 +214,39 @@
         var $buttonImport = $("#buttonImport");
         $buttonImport.click(onButtonImportClick);
 
+        var $buttonHelp = $("#buttonHelp");
+        $buttonHelp.click(onButtonHelpClick);
+
+        var $buttonControls = $("#buttonControls");
+        $buttonControls.click(onButtonControlsClick);
+
         $history = $("#historyValue");
+
+        $dialogHelp = $("#dialogHelp").dialog({
+            autoOpen: false,
+            buttons: [
+                {
+                    text: "Close",
+                    click: function () {
+                        $dialogHelp.dialog("close");
+                    }
+                }
+            ],
+            width: 500
+        });
+
+        $dialogControls = $("#dialogControls").dialog({
+            autoOpen: false,
+            buttons: [
+                {
+                    text: "Close",
+                    click: function () {
+                        $dialogControls.dialog("close");
+                    }
+                }
+            ],
+            width: 600
+        });
     });
 
 }());
