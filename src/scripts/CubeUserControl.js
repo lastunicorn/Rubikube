@@ -110,6 +110,11 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
         faceF.keyDown(ev);
         faceB.keyDown(ev);
 
+        handlekeyControls(ev);
+        handleKeyPadControls(ev);
+    }
+
+    function handlekeyControls(ev) {
         switch (ev.which) {
             case 76: // l
                 if (ev.shiftKey)
@@ -154,22 +159,103 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
                 break;
 
             case 37: // left arrow
-                cube.move(dust.rubikube.CubeMove.turnLeft);
+                if (!ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.turnLeft);
                 break;
 
-            case 38:
-                // up arrow
-                cube.move(dust.rubikube.CubeMove.turnUp);
+            case 38: // up arrow
+                if (!ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.turnUp);
                 break;
 
-            case 39:
-                // right arrow
-                cube.move(dust.rubikube.CubeMove.turnRight);
+            case 39: // right arrow
+                if (!ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.turnRight);
                 break;
 
-            case 40:
-                // down arrow
-                cube.move(dust.rubikube.CubeMove.turnDown);
+            case 40: // down arrow
+                if (!ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.turnDown);
+                break;
+        }
+    }
+
+    function handleKeyPadControls(ev) {
+        console.log(ev.which);
+
+        switch (ev.which) {
+            case 100: // keypad 4
+                if (ev.ctrlKey)
+                    cube.move(dust.rubikube.CubeMove.turnLeft);
+                else if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.leftInverse);
+                else
+                    cube.move(dust.rubikube.CubeMove.left);
+                break;
+
+            case 102: // keypad 6
+                if (ev.ctrlKey)
+                    cube.move(dust.rubikube.CubeMove.turnRight);
+                else if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.rightInverse);
+                else
+                    cube.move(dust.rubikube.CubeMove.right);
+                break;
+
+            case 104: // keypad 8
+                if (ev.ctrlKey)
+                    cube.move(dust.rubikube.CubeMove.turnUp);
+                else if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.upInverse);
+                else
+                    cube.move(dust.rubikube.CubeMove.up);
+                break;
+
+            case 98: // keypad 2
+                if (ev.ctrlKey)
+                    cube.move(dust.rubikube.CubeMove.turnDown);
+                else if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.downInverse);
+                else
+                    cube.move(dust.rubikube.CubeMove.down);
+                break;
+
+            case 101: // keypad 5
+                if (ev.ctrlKey)
+                    break;
+                else if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.frontInverse);
+                else
+                    cube.move(dust.rubikube.CubeMove.front);
+                break;
+
+            case 105: // keypad 9
+                if (ev.ctrlKey)
+                    break;
+                else if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.backInverse);
+                else
+                    cube.move(dust.rubikube.CubeMove.back);
+                break;
+
+            case 37: // left arrow
+                if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.leftInverse);
+                break;
+
+            case 38: // up arrow
+                if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.upInverse);
+                break;
+
+            case 39: // right arrow
+                if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.rightInverse);
+                break;
+
+            case 40: // down arrow
+                if (ev.shiftKey)
+                    cube.move(dust.rubikube.CubeMove.downInverse);
                 break;
         }
     }
