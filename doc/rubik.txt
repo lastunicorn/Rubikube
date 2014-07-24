@@ -1,0 +1,60 @@
+﻿The Superflip:
+U R2 F B R B2 R U2 L B2 R U' D' R2 F R' L B2 U2 F2
+
+The checkerboard:
+F B2 R' D2 B R U D' R L' D' F' R2 D F2 B'
+
+The easy checkerboard:
+U2 D2 F2 B2 L2 R2
+
+Vertical stripes:
+F U F R L2 B D' R D2 L D' B R2 L F U F
+
+Cross:
+U F B' L2 U2 L2 F' B U2 L2 U
+
+Cross 2:
+R2 L' D F2 R' D' R' L U' D R D B2 R' U D2
+
+Twisted cube in the big cube:
+F L F U' R U F2 L2 U' L' B D' B' L2 U
+
+Cube in a cube in a cube:
+U' L' U' F' R2 B' R F U B2 U B' L U' F U R F'
+
+Anaconda:
+L U B' U' R L' B R' F B' D R D' F'
+
+Python:
+F2 R' B' U R' L F' L F' B D' R B L2
+
+Black Mamba:
+R D L F' R L' D R' U D' B U' R' D'
+
+Green Mamba:
+R D R F R' F' B D R' U' B' U D2
+
+Four spots:
+F2 B2 U D' R2 L2 U D'
+
+Six spot:
+U D' R L' F B' U D'
+
+Twister:
+F R' U L F' L' F U' R U L' U' L F'
+
+================================================================================
+
+scramble:
+D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2
+
+4 crosses:
+R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ ▲ ▶ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼ R' L' ▼ ◀ ▼
+
+
+R' L' D' U' R' L' D' U' R' L' D' U' U' D' L' R' U' D' L' R' U' D' L' R'
+----------------------------------- -----------------------------------
+4 zig-zag                           4 crosses
+
+4 zig-zag:
+R' L' D' U' R' L' D' U' R' L' D' U'

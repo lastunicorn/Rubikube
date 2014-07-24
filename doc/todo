@@ -1,8 +1,17 @@
 Rubikube
 ========
 
-- help button - opens a popup containing information about how to play.
 - about button - opens a popup containing about information.
-- import position
 - checkbox to display face's names.
-- checkbox to display cell's numbers.
+- add new moves:
+	x (rotate): rotate the entire Cube on R
+	y (rotate): rotate the entire Cube on U
+	z (rotate): rotate the entire Cube on F
+    
+	M (Middle): the layer between L and R, turn direction as L (top-down)
+    E (Equator): the layer between U and D, turn direction as D (left-right)
+    S (Standing): the layer between F and B, turn direction as F
+
+- ability to export in different notations:
+	- Singmaster
+	- Wolstenholme
