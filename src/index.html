@@ -33,6 +33,29 @@
 
             <div id="cubeContainer"></div>
 
+            <div class="control-bar">
+                <input id="buttonScramble" class="button" type="button" value="Scramble"/>
+                <input id="buttonUndo" class="button" type="button" value="Undo"/>
+                <input id="buttonReset" class="button" type="button" value="Reset"/>
+            </div>
+
+            <div class="control-bar">
+                <input id="buttonExport" class="button" type="button" value="Export"/>
+                <input id="buttonImport" class="button" type="button" value="Import"/>
+                <input id="buttonHelp" class="button" type="button" value="?"/>
+            </div>
+
+            <div id="historyContainer">
+                <span>History:</span>
+                <span id="historyValue"/>
+            </div>
+
+            <div id="page-footer">(c) 2014 Dust in the Wind</div>
+
+            <!-- -------------------------------------------------------------------------------- -->
+            <!-- Dialog Help -->
+            <!-- -------------------------------------------------------------------------------- -->
+
             <div id="dialogHelp" title="Help">
                 <div class="observation">
                     <strong>Obs!</strong> First of all be sure the focus is on the Rubik's cube.
@@ -88,24 +111,24 @@
                 </table>-->
             </div>
 
-            <div class="control-bar">
-                <input id="buttonScramble" class="button" type="button" value="Scramble"/>
-                <input id="buttonUndo" class="button" type="button" value="Undo"/>
-                <input id="buttonReset" class="button" type="button" value="Reset"/>
+            <!-- -------------------------------------------------------------------------------- -->
+            <!-- Dialog Import -->
+            <!-- -------------------------------------------------------------------------------- -->
+
+            <div id="dialogImport" title="Import">
+                <div class="label">Write the moves:</div>
+                <textarea id="importValue"></textarea>
             </div>
 
-            <div class="control-bar">
-                <input id="buttonExport" class="button" type="button" value="Export"/>
-                <input id="buttonImport" class="button" type="button" value="Import"/>
-                <input id="buttonHelp" class="button" type="button" value="?"/>
+            <!-- -------------------------------------------------------------------------------- -->
+            <!-- Dialog Export -->
+            <!-- -------------------------------------------------------------------------------- -->
+
+            <div id="dialogExport" title="Export">
+                <div class="label">Copy to clipboard: Ctrl+C</div>
+                <textarea id="exportValue"></textarea>
             </div>
 
-            <div id="historyContainer">
-                <span>History:</span>
-                <span id="historyValue"/>
-            </div>
-
-            <div id="page-footer">(c) 2014 Dust in the Wind</div>
         </div>
     </body>
 </html>

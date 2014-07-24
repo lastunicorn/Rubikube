@@ -20,78 +20,12 @@
 
     var $history;
     var $dialogHelp;
+    var $dialogImport;
+    var $dialogExport;
 
     function refreshHistory() {
         var text = cube.getHistory();
         $history.text(text);
-    }
-
-    function moveCube(moveId) {
-        cube.move(moveId);
-    }
-
-    function onButtonLClicked() {
-        moveCube(dust.rubikube.CubeMove.left);
-    }
-
-    function onButtonLiClicked() {
-        moveCube(dust.rubikube.CubeMove.leftInverse);
-    }
-
-    function onButtonRClicked() {
-        moveCube(dust.rubikube.CubeMove.right);
-    }
-
-    function onButtonRiClicked() {
-        moveCube(dust.rubikube.CubeMove.rightInverse);
-    }
-
-    function onButtonUClicked() {
-        moveCube(dust.rubikube.CubeMove.up);
-    }
-
-    function onButtonUiClicked() {
-        moveCube(dust.rubikube.CubeMove.upInverse);
-    }
-
-    function onButtonDClicked() {
-        moveCube(dust.rubikube.CubeMove.down);
-    }
-
-    function onButtonDiClicked() {
-        moveCube(dust.rubikube.CubeMove.downInverse);
-    }
-
-    function onButtonFClicked() {
-        moveCube(dust.rubikube.CubeMove.front);
-    }
-
-    function onButtonFiClicked() {
-        moveCube(dust.rubikube.CubeMove.frontInverse);
-    }
-
-    function onButtonBClicked() {
-        moveCube(dust.rubikube.CubeMove.back);
-    }
-
-    function onButtonBiClicked() {
-        moveCube(dust.rubikube.CubeMove.backInverse);
-    }
-
-    function onButtonCubeLeftClicked() {
-        moveCube(dust.rubikube.CubeMove.turnLeft);
-    }
-
-    function onButtonCubeRightClicked() {
-        moveCube(dust.rubikube.CubeMove.turnRight);
-    }
-
-    function onButtonCubeUpClicked() {
-        moveCube(dust.rubikube.CubeMove.turnUp);
-    }
-
-    function onButtonCubeDownClicked() {
-        moveCube(dust.rubikube.CubeMove.turnDown);
     }
 
     function onButtonScrambleClicked() {
@@ -111,22 +45,18 @@
     }
 
     function onButtonExportClick() {
-        var text = $("#historyValue").text();
-        text = $.trim(text);
-
-        if (text.length == 0)
-            alert("No move was performed.");
-        else
-            prompt("Copy to clipboard: Ctrl+C, Enter", text);
+        $dialogExport.dialog("open");
+//        var text = $("#historyValue").text();
+//        text = $.trim(text);
+//
+//        if (text.length == 0)
+//            alert("No move was performed.");
+//        else
+//            prompt("Copy to clipboard: Ctrl+C, Enter", text);
     }
 
     function onButtonImportClick() {
-        var text = window.prompt("Copy to clipboard: Ctrl+C, Enter", "");
-
-        var moves = dust.rubikube.CubeMove.parse(text);
-
-        cube.reset();
-        cube.move(moves);
+        $dialogImport.dialog("open");
     }
 
     function onButtonHelpClick() {
@@ -145,54 +75,6 @@
         cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", cube);
 
         cube.cubeChanged.subscribe(onCubeChanged);
-
-        var $buttonL = $("#buttonL");
-        $buttonL.click(onButtonLClicked);
-
-        var $buttonLi = $("#buttonLi");
-        $buttonLi.click(onButtonLiClicked);
-
-        var $buttonR = $("#buttonR");
-        $buttonR.click(onButtonRClicked);
-
-        var $buttonRi = $("#buttonRi");
-        $buttonRi.click(onButtonRiClicked);
-
-        var $buttonU = $("#buttonU");
-        $buttonU.click(onButtonUClicked);
-
-        var $buttonUi = $("#buttonUi");
-        $buttonUi.click(onButtonUiClicked);
-
-        var $buttonD = $("#buttonD");
-        $buttonD.click(onButtonDClicked);
-
-        var $buttonDi = $("#buttonDi");
-        $buttonDi.click(onButtonDiClicked);
-
-        var $buttonF = $("#buttonF");
-        $buttonF.click(onButtonFClicked);
-
-        var $buttonFi = $("#buttonFi");
-        $buttonFi.click(onButtonFiClicked);
-
-        var $buttonB = $("#buttonB");
-        $buttonB.click(onButtonBClicked);
-
-        var $buttonBi = $("#buttonBi");
-        $buttonBi.click(onButtonBiClicked);
-
-        var $buttonCubeLeft = $("#buttonCubeLeft");
-        $buttonCubeLeft.click(onButtonCubeLeftClicked);
-
-        var $buttonCubeRight = $("#buttonCubeRight");
-        $buttonCubeRight.click(onButtonCubeRightClicked);
-
-        var $buttonCubeUp = $("#buttonCubeUp");
-        $buttonCubeUp.click(onButtonCubeUpClicked);
-
-        var $buttonCubeDown = $("#buttonCubeDown");
-        $buttonCubeDown.click(onButtonCubeDownClicked);
 
         var $buttonScramble = $("#buttonScramble");
         $buttonScramble.click(onButtonScrambleClicked);
@@ -225,6 +107,59 @@
                 }
             ],
             width: 500
+        });
+
+        $dialogImport = $("#dialogImport").dialog({
+            autoOpen: false,
+            modal: true,
+            width: 435,
+            buttons: [
+                {
+                    text: "Ok",
+                    click: function () {
+                        var text = $dialogImport.find("#importValue").val();
+                        var moves = dust.rubikube.CubeMove.parse(text);
+
+                        cube.reset();
+                        cube.move(moves);
+
+                        $dialogImport.dialog("close");
+                    }
+                },
+                {
+                    text: "Cancel",
+                    click: function () {
+                        $dialogImport.dialog("close");
+                    }
+                }
+            ],
+            open: function () {
+                $dialogImport.find("#importValue").val("");
+            }
+        });
+
+        $dialogExport = $("#dialogExport").dialog({
+            autoOpen: false,
+            modal: true,
+            width: 435,
+            buttons: [
+                {
+                    text: "Close",
+                    click: function () {
+                        $dialogExport.dialog("close");
+                    }
+                }
+            ],
+            open: function () {
+                var text = $("#historyValue").text();
+                text = $.trim(text);
+
+//                if (text.length == 0)
+//                    alert("No move was performed.");
+//                else
+                $dialogExport.find("#exportValue").val(text);
+                $dialogExport.find("#exportValue").select();
+            }
         });
     });
 
