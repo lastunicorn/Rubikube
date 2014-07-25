@@ -48,7 +48,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         for (var i = 0; i < 9; i++) {
             var $cell = $($faceCells.get(i));
             $cell.css("background-color", cellColors[offset + i]);
-            //$cell.text(cellValues[offset + i + 1]);
+            $cell.text(cellValues[offset + i + 1]);
         }
     };
 
@@ -251,7 +251,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         if (!allowTurnCube)
             return;
 
-        cube.move(dust.rubikube.CubeMove.turnLeft);
+        cube.move(dust.rubikube.CubeMove.turnY);
     }
 
     function onCellRightMouseEnter() {
@@ -276,7 +276,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         if (!allowTurnCube)
             return;
 
-        cube.move(dust.rubikube.CubeMove.turnRight);
+        cube.move(dust.rubikube.CubeMove.turnYi);
     }
 
     function onCellUpMouseEnter() {
@@ -301,7 +301,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         if (!allowTurnCube)
             return;
 
-        cube.move(dust.rubikube.CubeMove.turnUp);
+        cube.move(dust.rubikube.CubeMove.turnX);
     }
 
     function onCellDownMouseEnter() {
@@ -326,7 +326,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         if (!allowTurnCube)
             return;
 
-        cube.move(dust.rubikube.CubeMove.turnDown);
+        cube.move(dust.rubikube.CubeMove.turnXi);
     }
 
     function createFaceRow() {

@@ -2,7 +2,9 @@ Rubikube
 ========
 
 - about button - opens a popup containing about information.
+
 - checkbox to display face's names.
+
 - add new moves:
 	x (rotate): rotate the entire Cube on R
 	y (rotate): rotate the entire Cube on U
@@ -15,3 +17,9 @@ Rubikube
 - ability to export in different notations:
 	- Singmaster
 	- Wolstenholme
+
+- implement a solving algorithm.
+
+- add method to transform history
+	- remove XYZ
+	- remove MES

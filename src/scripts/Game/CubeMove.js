@@ -20,28 +20,59 @@ dust.rubikube = dust.rubikube || {};
 dust.rubikube.CubeMove = {
     none: 0,
 
+    // rotates the left face clockwise
     left: 1,
+
+    // rotates the left face counter-clockwise
     leftInverse: 2,
 
+    // rotates the right face clockwise
     right: 3,
+
+    // rotates the right face counter-clockwise
     rightInverse: 4,
 
+    // rotates the up face clockwise
     up: 5,
+
+    // rotates the up face counter-clockwise
     upInverse: 6,
 
+    // rotates the down face clockwise
     down: 7,
+
+    // rotates the down face counter-clockwise
     downInverse: 8,
 
+    // rotates the front face clockwise
     front: 9,
+
+    // rotates the front face counter-clockwise
     frontInverse: 10,
 
+    // rotates the back face clockwise
     back: 11,
+
+    // rotates the back face counter-clockwise
     backInverse: 12,
 
-    turnLeft: 13,
-    turnRight: 14,
-    turnUp: 15,
-    turnDown: 16
+    // rotates the whole cube clockwise on the right face (on the x axis)
+    turnX: 13,
+
+    // rotates the whole cube counter-clockwise on the right face (on the x axis)
+    turnXi: 14,
+
+    // rotates the whole cube clockwise on the up face (on the y axis)
+    turnY: 15,
+
+    // rotates the whole cube counter-clockwise on the up face (on the y axis)
+    turnYi: 16,
+
+    // rotates the whole cube clockwise on the front face (on the z axis)
+    turnZ: 17,
+
+    // rotates the whole cube counter-clockwise on the front face (on the z axis)
+    turnZi: 18
 };
 
 dust.rubikube.CubeMove.toString = function (moveId) {
@@ -82,17 +113,27 @@ dust.rubikube.CubeMove.toString = function (moveId) {
         case dust.rubikube.CubeMove.backInverse:
             return "B'";
 
-        case dust.rubikube.CubeMove.turnLeft:
-            return "\u25C0";
+        case dust.rubikube.CubeMove.turnX:
+            //return "\u25B2";
+            return "X";
 
-        case dust.rubikube.CubeMove.turnRight:
-            return "\u25B6";
+        case dust.rubikube.CubeMove.turnXi:
+            //return "\u25BC";
+            return "X'";
 
-        case dust.rubikube.CubeMove.turnUp:
-            return "\u25B2";
+        case dust.rubikube.CubeMove.turnY:
+            //return "\u25C0";
+            return "Y";
 
-        case dust.rubikube.CubeMove.turnDown:
-            return "\u25BC";
+        case dust.rubikube.CubeMove.turnYi:
+            //return "\u25B6";
+            return "Y'";
+
+        case dust.rubikube.CubeMove.turnZ:
+            return "Z";
+
+        case dust.rubikube.CubeMove.turnZi:
+            return "Z'";
 
         default:
             return "?";
@@ -183,20 +224,43 @@ dust.rubikube.CubeMove.parse = function (str) {
                 moves.push(dust.rubikube.CubeMove.back);
                 break;
 
-            case "\u25C0": // left arrow
-                moves.push(dust.rubikube.CubeMove.turnLeft);
+            case "x":
+                moves.push(dust.rubikube.CubeMove.turnX);
                 break;
 
-            case "\u25B6": // right arrow
-                moves.push(dust.rubikube.CubeMove.turnRight);
+            case "x'":
+                moves.push(dust.rubikube.CubeMove.turnXi);
                 break;
 
-            case "\u25B2": // up arrow
-                moves.push(dust.rubikube.CubeMove.turnUp);
+            case "x2":
+                moves.push(dust.rubikube.CubeMove.turnX);
+                moves.push(dust.rubikube.CubeMove.turnX);
                 break;
 
-            case "\u25BC": // down arrow
-                moves.push(dust.rubikube.CubeMove.turnDown);
+            case "y":
+                moves.push(dust.rubikube.CubeMove.turnY);
+                break;
+
+            case "y'":
+                moves.push(dust.rubikube.CubeMove.turnYi);
+                break;
+
+            case "y2":
+                moves.push(dust.rubikube.CubeMove.turnY);
+                moves.push(dust.rubikube.CubeMove.turnY);
+                break;
+
+            case "z":
+                moves.push(dust.rubikube.CubeMove.turnZ);
+                break;
+
+            case "z'":
+                moves.push(dust.rubikube.CubeMove.turnZi);
+                break;
+
+            case "z2":
+                moves.push(dust.rubikube.CubeMove.turnZ);
+                moves.push(dust.rubikube.CubeMove.turnZ);
                 break;
 
             default:
@@ -246,17 +310,23 @@ dust.rubikube.CubeMove.inverse = function (moveId) {
         case dust.rubikube.CubeMove.backInverse:
             return dust.rubikube.CubeMove.back;
 
-        case dust.rubikube.CubeMove.turnLeft:
-            return dust.rubikube.CubeMove.turnRight;
+        case dust.rubikube.CubeMove.turnX:
+            return dust.rubikube.CubeMove.turnXi;
 
-        case dust.rubikube.CubeMove.turnRight:
-            return dust.rubikube.CubeMove.turnLeft;
+        case dust.rubikube.CubeMove.turnXi:
+            return dust.rubikube.CubeMove.turnX;
 
-        case dust.rubikube.CubeMove.turnUp:
-            return dust.rubikube.CubeMove.turnDown;
+        case dust.rubikube.CubeMove.turnY:
+            return dust.rubikube.CubeMove.turnYi;
 
-        case dust.rubikube.CubeMove.turnDown:
-            return dust.rubikube.CubeMove.turnUp;
+        case dust.rubikube.CubeMove.turnYi:
+            return dust.rubikube.CubeMove.turnY;
+
+        case dust.rubikube.CubeMove.turnZ:
+            return dust.rubikube.CubeMove.turnZi;
+
+        case dust.rubikube.CubeMove.turnZi:
+            return dust.rubikube.CubeMove.turnZ;
 
         default:
             return dust.rubikube.CubeMove.none;

@@ -160,22 +160,22 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
 
             case 37: // left arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnLeft);
+                    cube.move(dust.rubikube.CubeMove.turnY);
                 break;
 
             case 38: // up arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnUp);
+                    cube.move(dust.rubikube.CubeMove.turnX);
                 break;
 
             case 39: // right arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnRight);
+                    cube.move(dust.rubikube.CubeMove.turnYi);
                 break;
 
             case 40: // down arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnDown);
+                    cube.move(dust.rubikube.CubeMove.turnXi);
                 break;
         }
     }
@@ -186,7 +186,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
         switch (ev.which) {
             case 100: // keypad 4
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnLeft);
+                    cube.move(dust.rubikube.CubeMove.turnY);
                 else if (ev.shiftKey)
                     cube.move(dust.rubikube.CubeMove.leftInverse);
                 else
@@ -195,7 +195,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
 
             case 102: // keypad 6
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnRight);
+                    cube.move(dust.rubikube.CubeMove.turnYi);
                 else if (ev.shiftKey)
                     cube.move(dust.rubikube.CubeMove.rightInverse);
                 else
@@ -204,7 +204,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
 
             case 104: // keypad 8
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnUp);
+                    cube.move(dust.rubikube.CubeMove.turnX);
                 else if (ev.shiftKey)
                     cube.move(dust.rubikube.CubeMove.upInverse);
                 else
@@ -213,7 +213,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
 
             case 98: // keypad 2
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnDown);
+                    cube.move(dust.rubikube.CubeMove.turnXi);
                 else if (ev.shiftKey)
                     cube.move(dust.rubikube.CubeMove.downInverse);
                 else
