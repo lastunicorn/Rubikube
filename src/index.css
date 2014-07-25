@@ -1,3 +1,6 @@
+/* General
+--------------------------------------------*/
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0px;
@@ -6,6 +9,77 @@ body {
 	width: 100%;
 	height: 100%;
 }
+
+button img {
+	vertical-align: middle;
+}
+
+button,.button {
+	font-size: 18px;
+	color: #ffffff;
+	padding: 8px 19px;
+	border-radius: 3px;
+	border: 1px solid #000000;
+	background: linear-gradient(to bottom, #333333 0%, #000000);
+	box-shadow:
+		0px 1px 1px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+button:hover,.button:hover {
+	background: linear-gradient(to bottom, #444444 0%, #111111);
+}
+
+button:active,.button:active {
+	background: linear-gradient(to top, #333333 0%, #000000);
+}
+
+.observation {
+    margin: 3px 0;
+    font-style: italic;
+}
+
+.control-bar {
+	margin: 10px auto;
+	text-align: center;
+}
+
+.clear-float {
+    clear: both;
+}
+
+.control-bar-cell-2 {
+    width: 50%;
+    float: left;
+}
+
+/* jQuery UI - General
+--------------------------------------------*/
+
+.ui-dialog {
+    font-size: 14px;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    font-size: 1.15em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    font-size: 1.15em;
+    padding: 0.3em;
+}
+
+
+.ui-dialog .ui-dialog-buttonpane button {
+    margin: 0.2em 0.4em 0.2em 0;
+    border-radius: 3px;
+}
+
+/* Main Page
+--------------------------------------------*/
 
 #content {
 	width: 900px;
@@ -30,9 +104,23 @@ body {
 	margin: 10px 0 0;
 }
 
+#historyContainer {
+    font-size: 12px;
+    background: #666;
+    margin: 20px 0 0;
+    padding: 4px;
+    position: relative;
+}
+
+#buttonReset {
+	color: #ff0033;
+}
+
+/* Main Page - Cube
+--------------------------------------------*/
+
 .cube {
 	background: #101010;/**/
-    /*background: #e0e0e0;/**/
 	border: 15px solid #000;
 	padding: 10px;
 	margin: 0 auto;
@@ -41,7 +129,6 @@ body {
 
 .cube:focus {
     background: #171717;/**/
-    /*background: #f0f0f0;/**/
     border-color: #0a0a0a;
     outline: none;
 }
@@ -51,7 +138,6 @@ body {
 	height: 37px;
 	border-radius: 3px;
 	border: 2px solid #ffffff;/**/
-    /*border: 3px solid #000;/**/
 	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
@@ -59,105 +145,46 @@ body {
     padding: 0;
 }
 
-.cell-cw {
+.cube .cell-cw {
     background: url(images/rotate-cw.png) center center;
     background-size: 33px 33px;
 }
 
-.cell-ccw {
+.cube .cell-ccw {
     background: url(images/rotate-ccw.png) center center;
     background-size: 33px 33px;
 }
 
-.cell-left {
+.cube .cell-left {
     background: url(images/left.png) center center;
     background-size: 33px 33px;
 }
 
-.cell-right {
+.cube .cell-right {
     background: url(images/right.png) center center;
     background-size: 33px 33px;
 }
 
-.cell-up {
+.cube .cell-up {
     background: url(images/up.png) center center;
     background-size: 33px 33px;
 }
 
-.cell-down {
+.cube .cell-down {
     background: url(images/down.png) center center;
     background-size: 33px 33px;
 }
 
-.observation {
-    margin: 3px 0;
-    font-style: italic;
-}
-
-.button {
-	font-size: 18px;
-	color: #ffffff;
-	padding: 8px 19px;
-	border-radius: 3px;
-	border: 1px solid #000000;
-	background: linear-gradient(to bottom, #333333 0%, #000000);
-	box-shadow:
-		0px 1px 1px rgba(000,000,000,0.5),
-		inset 0px 0px 1px rgba(255,255,255,1);
-	text-shadow:
-		0px -1px 0px rgba(000,000,000,0.7),
-		0px 1px 0px rgba(255,255,255,0.3);
-}
-
-.button:hover {
-	background: linear-gradient(to bottom, #444444 0%, #111111);
-}
-
-.button:active {
-	background: linear-gradient(to top, #333333 0%, #000000);
-}
-
-.button.button-cw {
-	background: linear-gradient(to bottom, #333333 0%, #000000);
-}
-
-.button.button-cw:hover {
-	background: linear-gradient(to bottom, #444444 0%, #111111);
-}
-
-.button.button-cw:active {
-	background: linear-gradient(to top, #333333 0%, #000000);
-}
-
-.button.button-ccw {
-	background: linear-gradient(to bottom, #333344 0%, #000011);
-}
-
-.button.button-ccw:hover {
-	background: linear-gradient(to bottom, #444455 0%, #111122);
-}
-
-.button.button-ccw:active {
-	background: linear-gradient(to top, #333344 0%, #000011);
-}
-
-.control-bar {
-	margin: 10px auto;
-	text-align: center;
-}
-
-.clear-float {
-    clear: both;
-}
-
-.control-bar-cell-2 {
-    width: 50%;
-    float: left;
-}
-
 #faceRotateButtons, #cubeRotateButtons {
-	margin: 0 auto;/**/
+	margin: 0 auto;
 }
+
+#dialogControls {
+    text-align: center;
+}
+
+/* Dialog Help
+--------------------------------------------*/
 
 #dialogHelp {
     color: #aaaaaa;
@@ -190,94 +217,7 @@ body {
     padding: 0 5px;
 }
 
-#dialogControls {
-    text-align: center;
-}
-
-/* History
---------------------------------------------*/
-
-#historyContainer {
-    font-size: 12px;
-    background: #666;
-    margin: 20px 0 0;
-    padding: 4px;
-    position: relative;
-}
-
-#historyContainer #textBoxHistory {
-    display: none;
-}
-
-#historyButtons {
-    display: inline;
-}
-
-#historyButtons button {
-    padding: 0;
-    font-size: inherit;
-    border-radius: 3px;
-    color: #ffffff;
-    border: 1px solid #000000;
-    background: linear-gradient(to bottom, #333333 0%, #000000);
-}
-
-#historyButtons button:hover {
-    background: linear-gradient(to bottom, #444444 0%, #111111);
-}
-
-#historyButtons button:active {
-    background: linear-gradient(to top, #333333 0%, #000000);
-}
-
-/* jQuery UI
---------------------------------------------*/
-
-.ui-dialog {
-    font-size: 14px;
-}
-
-.ui-dialog .ui-dialog-titlebar {
-    font-size: 1.15em;
-}
-
-.ui-dialog .ui-dialog-buttonpane {
-    font-size: 1.15em;
-    padding: 0.3em;
-}
-
-
-.ui-dialog .ui-dialog-buttonpane button {
-    margin: 0.2em 0.4em 0.2em 0;
-    border-radius: 3px;
-}
-
-/*
-.ui-button {
-    font-size: 18px;
-    color: #ffffff;
-    padding: 8px 19px;
-    border-radius: 3px;
-    border: 1px solid #000000;
-    background: linear-gradient(to bottom, #333333 0%, #000000);
-    box-shadow:
-        0px 1px 1px rgba(000,000,000,0.5),
-        inset 0px 0px 1px rgba(255,255,255,1);
-    text-shadow:
-        0px -1px 0px rgba(000,000,000,0.7),
-        0px 1px 0px rgba(255,255,255,0.3);
-}
-
-.ui-button:hover {
-    background: linear-gradient(to bottom, #444444 0%, #111111);
-}
-
-.ui-button:active {
-    background: linear-gradient(to top, #333333 0%, #000000);
-}
-*/
-
-/* Import Dialog
+/* Dialog Import
 --------------------------------------------*/
 
 #dialogImport #importValue {
@@ -290,7 +230,7 @@ body {
     margin: 0  0 10px 0;
 }
 
-/* Export Dialog
+/* Dialog Export
 --------------------------------------------*/
 
 #dialogExport #exportValue {

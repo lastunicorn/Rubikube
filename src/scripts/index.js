@@ -19,9 +19,9 @@
     var cubeUserControl;
 
     var $history;
-    var $dialogHelp;
-    var $dialogImport;
-    var $dialogExport;
+    var dialogHelp;
+    var dialogImport;
+    var dialogExport;
 
     function refreshHistory() {
         var text = cube.getHistory();
@@ -45,22 +45,15 @@
     }
 
     function onButtonExportClick() {
-        $dialogExport.dialog("open");
-//        var text = $("#historyValue").text();
-//        text = $.trim(text);
-//
-//        if (text.length == 0)
-//            alert("No move was performed.");
-//        else
-//            prompt("Copy to clipboard: Ctrl+C, Enter", text);
+        dialogExport.open();
     }
 
     function onButtonImportClick() {
-        $dialogImport.dialog("open");
+        dialogImport.open();
     }
 
     function onButtonHelpClick() {
-        $dialogHelp.dialog("open");
+        dialogHelp.open();
     }
 
     function scramble() {
@@ -96,71 +89,9 @@
 
         $history = $("#historyValue");
 
-        $dialogHelp = $("#dialogHelp").dialog({
-            autoOpen: false,
-            buttons: [
-                {
-                    text: "Close",
-                    click: function () {
-                        $dialogHelp.dialog("close");
-                    }
-                }
-            ],
-            width: 500
-        });
-
-        $dialogImport = $("#dialogImport").dialog({
-            autoOpen: false,
-            modal: true,
-            width: 435,
-            buttons: [
-                {
-                    text: "Ok",
-                    click: function () {
-                        var text = $dialogImport.find("#importValue").val();
-                        var moves = dust.rubikube.CubeMove.parse(text);
-
-                        cube.reset();
-                        cube.move(moves);
-
-                        $dialogImport.dialog("close");
-                    }
-                },
-                {
-                    text: "Cancel",
-                    click: function () {
-                        $dialogImport.dialog("close");
-                    }
-                }
-            ],
-            open: function () {
-                $dialogImport.find("#importValue").val("");
-            }
-        });
-
-        $dialogExport = $("#dialogExport").dialog({
-            autoOpen: false,
-            modal: true,
-            width: 435,
-            buttons: [
-                {
-                    text: "Close",
-                    click: function () {
-                        $dialogExport.dialog("close");
-                    }
-                }
-            ],
-            open: function () {
-                var text = $("#historyValue").text();
-                text = $.trim(text);
-
-//                if (text.length == 0)
-//                    alert("No move was performed.");
-//                else
-                $dialogExport.find("#exportValue").val(text);
-                $dialogExport.find("#exportValue").select();
-            }
-        });
+        dialogHelp = new dust.rubikube.HelpDialog("#dialogHelp");
+        dialogImport = new dust.rubikube.ImportDialog("#dialogImport", cube);
+        dialogExport = new dust.rubikube.ExportDialog("#dialogExport");
     });
 
 }());
