@@ -62,10 +62,10 @@
     }
 
     $(function () {
-        var faceColors = new dust.rubikube.CubeFaceColors();
-        cube = new dust.rubikube.Cube(faceColors);
+        cube = new dust.rubikube.Cube();
 
-        cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", cube);
+        var faceColors = new dust.rubikube.CubeFaceColors();
+        cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", cube, faceColors);
 
         cube.cubeChanged.subscribe(onCubeChanged);
 

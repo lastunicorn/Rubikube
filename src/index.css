@@ -14,7 +14,11 @@ button img {
 	vertical-align: middle;
 }
 
-button,.button {
+button img + span {
+    margin: 0 0 0 15px;
+}
+
+button, .button {
 	font-size: 18px;
 	color: #ffffff;
 	padding: 8px 19px;
@@ -29,11 +33,11 @@ button,.button {
 		0px 1px 0px rgba(255,255,255,0.3);
 }
 
-button:hover,.button:hover {
+button:hover, .button:hover {
 	background: linear-gradient(to bottom, #444444 0%, #111111);
 }
 
-button:active,.button:active {
+button:active, .button:active {
 	background: linear-gradient(to top, #333333 0%, #000000);
 }
 

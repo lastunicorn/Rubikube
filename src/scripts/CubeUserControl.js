@@ -17,7 +17,7 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.CubeUserControl = function (parentSelector, cube) {
+dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
     var $parent;
     var $cube;
 
@@ -29,15 +29,14 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
     var faceB;
 
     function refreshCube() {
-        var cellColors = cube.toColors();
-        var cellValues = cube.toValues();
+        var cells = cube.toCellArray();
 
-        faceL.refreshCubeFace(cellColors, cellValues, 0);
-        faceR.refreshCubeFace(cellColors, cellValues, 9);
-        faceU.refreshCubeFace(cellColors, cellValues, 18);
-        faceD.refreshCubeFace(cellColors, cellValues, 27);
-        faceF.refreshCubeFace(cellColors, cellValues, 36);
-        faceB.refreshCubeFace(cellColors, cellValues, 45);
+        faceL.refreshCells(cells.slice(1, 10));
+        faceR.refreshCells(cells.slice(10, 19));
+        faceU.refreshCells(cells.slice(19, 28));
+        faceD.refreshCells(cells.slice(28, 37));
+        faceF.refreshCells(cells.slice(37, 46));
+        faceB.refreshCells(cells.slice(46));
     }
 
     function onCubeChanged() {
@@ -263,12 +262,12 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube) {
     (function initialize() {
         $parent = $(parentSelector);
 
-        faceL = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.left);
-        faceR = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.right);
-        faceU = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.up);
-        faceD = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.down);
-        faceF = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.front);
-        faceB = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.back);
+        faceL = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.left, faceColors);
+        faceR = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.right, faceColors);
+        faceU = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.up, faceColors);
+        faceD = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.down, faceColors);
+        faceF = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.front, faceColors);
+        faceB = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.back, faceColors);
 
         createUi();
 

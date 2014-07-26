@@ -17,15 +17,18 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
+dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
     var $parent;
+
     var $face;
-    var $faceCells;
+    var $cells;
+
     var $centerCell;
     var $leftCell;
     var $rightCell;
     var $upCell;
     var $downCell;
+
     var isMouseOverCenterCell = false;
     var isMouseOverLeftCell = false;
     var isMouseOverRightCell = false;
@@ -44,45 +47,46 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId) {
         $parent.append($face);
     }
 
-    this.refreshCubeFace = function (cellColors, cellValues, offset) {
+    this.refreshCells = function (cells) {
         for (var i = 0; i < 9; i++) {
-            var $cell = $($faceCells.get(i));
-            $cell.css("background-color", cellColors[offset + i]);
-            $cell.text(cellValues[offset + i + 1]);
+            var $cell = $($cells.get(i));
+            var color = faceColors.getColorFor(cells[i].faceId);
+            $cell.css("background-color", color);
+            $cell.text(cells[i].id);
         }
     };
 
     function createUi(className) {
         createFace(className);
 
-        $faceCells = $face.find("td");
+        $cells = $face.find("td");
 
-        $centerCell = $($faceCells.get(4))
+        $centerCell = $($cells.get(4))
             .mousedown(onCellCenterMouseDown)
             .mouseup(onCellCenterMouseUp)
             .mouseenter(onCellCenterMouseEnter)
             .mouseout(onCellCenterMouseOut)
             .on('contextmenu', onContextMenu);
 
-        $leftCell = $($faceCells.get(3))
+        $leftCell = $($cells.get(3))
             .mousedown(onCellLeftMouseDown)
             .mouseenter(onCellLeftMouseEnter)
             .mouseout(onCellLeftMouseOut)
             .on('contextmenu', onContextMenu);
 
-        $rightCell = $($faceCells.get(5))
+        $rightCell = $($cells.get(5))
             .mousedown(onCellRightMouseDown)
             .mouseenter(onCellRightMouseEnter)
             .mouseout(onCellRightMouseOut)
             .on('contextmenu', onContextMenu);
 
-        $upCell = $($faceCells.get(1))
+        $upCell = $($cells.get(1))
             .mousedown(onCellUpMouseDown)
             .mouseenter(onCellUpMouseEnter)
             .mouseout(onCellUpMouseOut)
             .on('contextmenu', onContextMenu);
 
-        $downCell = $($faceCells.get(7))
+        $downCell = $($cells.get(7))
             .mousedown(onCellDownMouseDown)
             .mouseenter(onCellDownMouseEnter)
             .mouseout(onCellDownMouseOut)

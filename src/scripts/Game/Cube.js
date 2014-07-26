@@ -17,8 +17,8 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.Cube = function (faceColors) {
-    var state;
+dust.rubikube.Cube = function () {
+    var cells = [];
     var transformations;
     var history = [];
 
@@ -63,7 +63,7 @@ dust.rubikube.Cube = function (faceColors) {
     };
 
     function performMove(moveId) {
-        var newState = [];
+        var newCells = [];
         var transformationArray = transformations.get(moveId);
 
         for (var i = 1; i <= 54; i++) {
@@ -71,10 +71,10 @@ dust.rubikube.Cube = function (faceColors) {
             if (transformationValue === undefined)
                 transformationValue = i;
 
-            newState[i] = state[transformationValue];
+            newCells[i] = cells[transformationValue];
         }
 
-        state = newState;
+        cells = newCells;
     }
 
     function calculateFace(cellNumber) {
@@ -99,20 +99,14 @@ dust.rubikube.Cube = function (faceColors) {
         return dust.rubikube.CubeFace.none;
     }
 
-    this.toColors = function () {
-        var colors = [];
+    this.toCellArray = function () {
+        var items = [];
 
-        for (var i = 1; i < state.length; i++) {
-            var face = calculateFace(state[i]);
-            var color = faceColors.getColorFor(face);
-            colors.push(color);
+        for (var i = 1; i < cells.length; i++) {
+            items[i] = cells[i];
         }
 
-        return colors;
-    };
-
-    this.toValues = function () {
-        return state;
+        return items;
     };
 
     this.getHistory = function () {
@@ -129,7 +123,12 @@ dust.rubikube.Cube = function (faceColors) {
 
     function reset() {
         for (var i = 1; i <= 54; i++) {
-            state[i] = i;
+            var cell = {
+                id: i,
+                faceId: calculateFace(i)
+            };
+
+            cells[i] = (cell);
         }
 
         history.length = 0;
@@ -140,7 +139,6 @@ dust.rubikube.Cube = function (faceColors) {
     (function initialize() {
         transformations = new dust.rubikube.Transformations();
 
-        state = [];
         reset();
     }());
 };
