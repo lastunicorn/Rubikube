@@ -6,10 +6,6 @@ Rubikube
 - checkbox to display face's names.
 
 - add new moves:
-	x (rotate): rotate the entire Cube on R
-	y (rotate): rotate the entire Cube on U
-	z (rotate): rotate the entire Cube on F
-    
 	M (Middle): the layer between L and R, turn direction as L (top-down)
     E (Equator): the layer between U and D, turn direction as D (left-right)
     S (Standing): the layer between F and B, turn direction as F

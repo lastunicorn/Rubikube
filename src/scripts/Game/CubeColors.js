@@ -17,7 +17,7 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.CubeFaceColors = function () {
+dust.rubikube.CubeColors = function () {
     this.getColorFor = function (cubeFaceId) {
         switch (cubeFaceId) {
             case dust.rubikube.CubeFace.left:

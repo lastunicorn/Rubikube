@@ -145,120 +145,120 @@ dust.rubikube.CubeMove.parse = function (str) {
     var items = str.split(" ");
 
     for (var i = 0; i < items.length; i++) {
-        switch (items[i].toLowerCase()) {
-            case "l":
+        switch (items[i].toUpperCase()) {
+            case "L":
                 moves.push(dust.rubikube.CubeMove.left);
                 break;
 
-            case "l'":
+            case "L'":
                 moves.push(dust.rubikube.CubeMove.leftInverse);
                 break;
 
-            case "l2":
+            case "L2":
                 moves.push(dust.rubikube.CubeMove.left);
                 moves.push(dust.rubikube.CubeMove.left);
                 break;
 
-            case "r":
+            case "R":
                 moves.push(dust.rubikube.CubeMove.right);
                 break;
 
-            case "r'":
+            case "R'":
                 moves.push(dust.rubikube.CubeMove.rightInverse);
                 break;
 
-            case "r2":
+            case "R2":
                 moves.push(dust.rubikube.CubeMove.right);
                 moves.push(dust.rubikube.CubeMove.right);
                 break;
 
-            case "u":
+            case "U":
                 moves.push(dust.rubikube.CubeMove.up);
                 break;
 
-            case "u'":
+            case "U'":
                 moves.push(dust.rubikube.CubeMove.upInverse);
                 break;
 
-            case "u2":
+            case "U2":
                 moves.push(dust.rubikube.CubeMove.up);
                 moves.push(dust.rubikube.CubeMove.up);
                 break;
 
-            case "d":
+            case "D":
                 moves.push(dust.rubikube.CubeMove.down);
                 break;
 
-            case "d'":
+            case "D'":
                 moves.push(dust.rubikube.CubeMove.downInverse);
                 break;
 
-            case "d2":
+            case "D2":
                 moves.push(dust.rubikube.CubeMove.down);
                 moves.push(dust.rubikube.CubeMove.down);
                 break;
 
-            case "f":
+            case "F":
                 moves.push(dust.rubikube.CubeMove.front);
                 break;
 
-            case "f'":
+            case "F'":
                 moves.push(dust.rubikube.CubeMove.frontInverse);
                 break;
 
-            case "f2":
+            case "F2":
                 moves.push(dust.rubikube.CubeMove.front);
                 moves.push(dust.rubikube.CubeMove.front);
                 break;
 
-            case "b":
+            case "B":
                 moves.push(dust.rubikube.CubeMove.back);
                 break;
 
-            case "b'":
+            case "B'":
                 moves.push(dust.rubikube.CubeMove.backInverse);
                 break;
 
-            case "b2":
+            case "B2":
                 moves.push(dust.rubikube.CubeMove.back);
                 moves.push(dust.rubikube.CubeMove.back);
                 break;
 
-            case "x":
+            case "X":
                 moves.push(dust.rubikube.CubeMove.turnX);
                 break;
 
-            case "x'":
+            case "X'":
                 moves.push(dust.rubikube.CubeMove.turnXi);
                 break;
 
-            case "x2":
+            case "X2":
                 moves.push(dust.rubikube.CubeMove.turnX);
                 moves.push(dust.rubikube.CubeMove.turnX);
                 break;
 
-            case "y":
+            case "Y":
                 moves.push(dust.rubikube.CubeMove.turnY);
                 break;
 
-            case "y'":
+            case "Y'":
                 moves.push(dust.rubikube.CubeMove.turnYi);
                 break;
 
-            case "y2":
+            case "Y2":
                 moves.push(dust.rubikube.CubeMove.turnY);
                 moves.push(dust.rubikube.CubeMove.turnY);
                 break;
 
-            case "z":
+            case "Z":
                 moves.push(dust.rubikube.CubeMove.turnZ);
                 break;
 
-            case "z'":
+            case "Z'":
                 moves.push(dust.rubikube.CubeMove.turnZi);
                 break;
 
-            case "z2":
+            case "Z2":
                 moves.push(dust.rubikube.CubeMove.turnZ);
                 moves.push(dust.rubikube.CubeMove.turnZ);
                 break;

@@ -21,6 +21,7 @@ dust.rubikube.Cube = function () {
     var cells = [];
     var transformations;
     var history = [];
+    var redoList = [];
 
     var cubeChangedEvent = new dust.Event();
     this.cubeChanged = cubeChangedEvent.client;
@@ -47,19 +48,42 @@ dust.rubikube.Cube = function () {
             move: performMove
         };
 
-        var moveCommand = new dust.rubikube.MoveCommand(cubeCommander, moveId);
-        history.push(moveCommand);
-        moveCommand.execute();
+        var command = new dust.rubikube.MoveCommand(cubeCommander, moveId);
+        history.push(command);
+
+        command.execute();
     }
 
     this.undoLastMove = function () {
         if (history.length == 0)
             return;
 
-        var moveCommand = history.pop();
-        moveCommand.undo();
+        var command = history.pop();
+        redoList.push(command);
+
+        command.undo();
 
         cubeChangedEvent.raise(this, null);
+    };
+
+    this.isUndoAvailable = function () {
+        return history.length > 0;
+    };
+
+    this.redoMove = function () {
+        if (redoList.length == 0)
+            return;
+
+        var command = redoList.pop();
+        history.push(command);
+
+        command.execute();
+
+        cubeChangedEvent.raise(this, null);
+    };
+
+    this.isRedoAvailable = function () {
+        return redoList.length > 0;
     };
 
     function performMove(moveId) {
@@ -133,6 +157,10 @@ dust.rubikube.Cube = function () {
 
         history.length = 0;
 
+        cubeChangedEvent.raise(this, null);
+    }
+
+    function onHistoryChanged(){
         cubeChangedEvent.raise(this, null);
     }
 

@@ -19,14 +19,12 @@
     var cubeUserControl;
 
     var $history;
+    var $buttonUndo;
+    var $buttonRedo;
+
     var dialogHelp;
     var dialogImport;
     var dialogExport;
-
-    function refreshHistory() {
-        var text = cube.getHistory();
-        $history.text(text);
-    }
 
     function onButtonScrambleClicked() {
         scramble();
@@ -36,12 +34,27 @@
         cube.undoLastMove();
     }
 
+    function onButtonRedoClicked() {
+        cube.redoMove();
+    }
+
     function onButtonResetClicked() {
         cube.reset();
     }
 
+    function refreshAllControls() {
+        var text = cube.getHistory();
+        $history.text(text);
+
+        var isUndoAvailable = cube.isUndoAvailable();
+        $buttonUndo.prop("disabled", !isUndoAvailable);
+
+        var isRedoAvailable = cube.isRedoAvailable();
+        $buttonRedo.prop("disabled", !isRedoAvailable);
+    }
+
     function onCubeChanged() {
-        refreshHistory();
+        refreshAllControls();
     }
 
     function onButtonExportClick() {
@@ -64,7 +77,7 @@
     $(function () {
         cube = new dust.rubikube.Cube();
 
-        var faceColors = new dust.rubikube.CubeFaceColors();
+        var faceColors = new dust.rubikube.CubeColors();
         cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", cube, faceColors);
 
         cube.cubeChanged.subscribe(onCubeChanged);
@@ -72,8 +85,11 @@
         var $buttonScramble = $("#buttonScramble");
         $buttonScramble.click(onButtonScrambleClicked);
 
-        var $buttonUndo = $("#buttonUndo");
+        $buttonUndo = $("#buttonUndo");
         $buttonUndo.click(onButtonUndoClicked);
+
+        $buttonRedo = $("#buttonRedo");
+        $buttonRedo.click(onButtonRedoClicked);
 
         var $buttonReset = $("#buttonReset");
         $buttonReset.click(onButtonResetClicked);
@@ -92,6 +108,8 @@
         dialogHelp = new dust.rubikube.HelpDialog("#dialogHelp");
         dialogImport = new dust.rubikube.ImportDialog("#dialogImport", cube);
         dialogExport = new dust.rubikube.ExportDialog("#dialogExport");
+
+        refreshAllControls();
     });
 
 }());

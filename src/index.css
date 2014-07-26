@@ -41,6 +41,11 @@ button:active, .button:active {
 	background: linear-gradient(to top, #333333 0%, #000000);
 }
 
+button:disabled, .button:disabled {
+    background: linear-gradient(to bottom, #666 0%, #333);
+    color: #222;
+}
+
 .observation {
     margin: 3px 0;
     font-style: italic;
