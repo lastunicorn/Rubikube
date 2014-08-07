@@ -119,7 +119,7 @@ dust.rubikube.RubikGame = function () {
     };
 
     this.import = function (text) {
-        var moves = dust.rubikube.SingmasterNotation.parse(text);
+        var moves = dust.rubikube.singmaster.SingmasterNotation.parse(text);
         cube.reset(moves);
     };
 

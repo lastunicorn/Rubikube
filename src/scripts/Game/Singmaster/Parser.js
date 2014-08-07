@@ -16,98 +16,24 @@
 
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
+dust.rubikube.singmaster = dust.rubikube.singmaster || {};
 
-dust.rubikube.SingmasterNotation = {};
+dust.rubikube.singmaster.Parser = function () {
+    var moves;
 
-dust.rubikube.SingmasterNotation.toString = function (moveId) {
-    switch (moveId) {
-        case dust.rubikube.CubeMove.left:
-            return "L";
+    this.parse = function (str) {
+        moves = [];
+        var items = str.split(" ");
 
-        case dust.rubikube.CubeMove.leftInverse:
-            return "L'";
+        for (var i = 0; i < items.length; i++) {
+            parseOne(items[i]);
+        }
 
-        case dust.rubikube.CubeMove.right:
-            return "R";
+        return moves;
+    };
 
-        case dust.rubikube.CubeMove.rightInverse:
-            return "R'";
-
-        case dust.rubikube.CubeMove.up:
-            return "U";
-
-        case dust.rubikube.CubeMove.upInverse:
-            return "U'";
-
-        case dust.rubikube.CubeMove.down:
-            return "D";
-
-        case dust.rubikube.CubeMove.downInverse:
-            return "D'";
-
-        case dust.rubikube.CubeMove.front:
-            return "F";
-
-        case dust.rubikube.CubeMove.frontInverse:
-            return "F'";
-
-        case dust.rubikube.CubeMove.back:
-            return "B";
-
-        case dust.rubikube.CubeMove.backInverse:
-            return "B'";
-
-        case dust.rubikube.CubeMove.turnX:
-            //return "\u25B2";
-            return "X";
-
-        case dust.rubikube.CubeMove.turnXInverse:
-            //return "\u25BC";
-            return "X'";
-
-        case dust.rubikube.CubeMove.turnY:
-            //return "\u25C0";
-            return "Y";
-
-        case dust.rubikube.CubeMove.turnYInverse:
-            //return "\u25B6";
-            return "Y'";
-
-        case dust.rubikube.CubeMove.turnZ:
-            return "Z";
-
-        case dust.rubikube.CubeMove.turnZInverse:
-            return "Z'";
-
-        case dust.rubikube.CubeMove.middle:
-            return "M";
-
-        case dust.rubikube.CubeMove.middleInverse:
-            return "M'";
-
-        case dust.rubikube.CubeMove.equator:
-            return "E";
-
-        case dust.rubikube.CubeMove.equatorInverse:
-            return "E'";
-
-        case dust.rubikube.CubeMove.standing:
-            return "S";
-
-        case dust.rubikube.CubeMove.standingInverse:
-            return "S'";
-
-        default:
-            return "?";
-    }
-};
-
-dust.rubikube.SingmasterNotation.parse = function (str) {
-    var moves = [];
-    var items = str.split(" ");
-
-    for (var i = 0; i < items.length; i++) {
-        switch (items[i].toUpperCase()) {
+    function parseOne(moveId) {
+        switch (moveId.toUpperCase()) {
             case "L":
                 moves.push(dust.rubikube.CubeMove.left);
                 break;
@@ -269,6 +195,4 @@ dust.rubikube.SingmasterNotation.parse = function (str) {
                 break;
         }
     }
-
-    return moves;
 };

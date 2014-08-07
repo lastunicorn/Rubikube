@@ -52,7 +52,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
             var $cell = $($cells.get(i));
             var color = faceColors.getColorFor(cells[i].faceId);
             $cell.css("background-color", color);
-            $cell.text(cells[i].id);
+            //$cell.text(cells[i].id);
         }
     };
 

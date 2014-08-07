@@ -56,22 +56,22 @@ dust.rubikube.CubeMove = {
     // rotates the back face counter-clockwise
     backInverse: 12,
 
-    // rotates the whole cube clockwise on the right face (on the x axis)
+    // rotates the whole cube clockwise on the R face (on the x axis)
     turnX: 13,
 
-    // rotates the whole cube counter-clockwise on the right face (on the x axis)
+    // rotates the whole cube counter-clockwise on the R face (on the x axis)
     turnXInverse: 14,
 
-    // rotates the whole cube clockwise on the up face (on the y axis)
+    // rotates the whole cube clockwise on the U face (on the y axis)
     turnY: 15,
 
-    // rotates the whole cube counter-clockwise on the up face (on the y axis)
+    // rotates the whole cube counter-clockwise on the U face (on the y axis)
     turnYInverse: 16,
 
-    // rotates the whole cube clockwise on the front face (on the z axis)
+    // rotates the whole cube clockwise on the F face (on the z axis)
     turnZ: 17,
 
-    // rotates the whole cube counter-clockwise on the front face (on the z axis)
+    // rotates the whole cube counter-clockwise on the F face (on the z axis)
     turnZInverse: 18,
 
     // rotates the layer between L and R, turn direction as L
