@@ -23,8 +23,7 @@ dust.rubikube = dust.rubikube || {};
  */
 dust.rubikube.RubikGame = function () {
     var cube;
-    var history = [];
-    var redoList = [];
+    var history;
 
     Object.defineProperty(this, "cube", {
         configurable: false,
@@ -62,37 +61,23 @@ dust.rubikube.RubikGame = function () {
             moveId: moveId
         });
 
-        history.push(command);
-
-        command.execute();
+        history.add(command);
     }
 
     this.undoLastMove = function () {
-        if (history.length == 0)
-            return;
-
-        var command = history.pop();
-        redoList.push(command);
-
-        command.undo();
+        history.undoLastMove();
     };
 
     this.isUndoAvailable = function () {
-        return history.length > 0;
+        return history.isUndoAvailable();
     };
 
     this.redoMove = function () {
-        if (redoList.length == 0)
-            return;
-
-        var command = redoList.pop();
-        history.push(command);
-
-        command.execute();
+        history.redoMove();
     };
 
     this.isRedoAvailable = function () {
-        return redoList.length > 0;
+        return history.isRedoAvailable();
     };
 
     this.toCellArray = function () {
@@ -100,20 +85,12 @@ dust.rubikube.RubikGame = function () {
     };
 
     this.getHistory = function () {
-        var sb = [];
-
-        for (var i = 0; i < history.length; i++) {
-            sb.push(history[i].toString());
-        }
-
-        return sb.join(" ");
+        return history.toString();
     };
 
     this.reset = function () {
+        history.reset();
         cube.reset();
-
-        history.length = 0;
-        redoList.length = 0;
 
         cubeChangedEvent.raise(this, null);
     };
@@ -129,6 +106,7 @@ dust.rubikube.RubikGame = function () {
 
     (function initialize() {
         cube = new dust.rubikube.Cube();
+        history = new dust.rubikube.History();
 
         cube.cubeChanged.subscribe(onCubeChanged);
     }());

@@ -18,9 +18,56 @@ window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
 dust.rubikube.History = function () {
-    this.import = function(items){
-        if(typeof items === "string"){
+    var history = [];
+    var redoList = [];
 
+    this.add = function(command){
+        history.push(command);
+        redoList.length = 0;
+
+        command.execute();
+    };
+
+    this.undoLastMove = function () {
+        if (history.length == 0)
+            return;
+
+        var command = history.pop();
+        redoList.push(command);
+
+        command.undo();
+    };
+
+    this.isUndoAvailable = function () {
+        return history.length > 0;
+    };
+
+    this.redoMove = function () {
+        if (redoList.length == 0)
+            return;
+
+        var command = redoList.pop();
+        history.push(command);
+
+        command.execute();
+    };
+
+    this.isRedoAvailable = function () {
+        return redoList.length > 0;
+    };
+
+    this.reset = function () {
+        history.length = 0;
+        redoList.length = 0;
+    };
+
+    this.toString = function () {
+        var sb = [];
+
+        for (var i = 0; i < history.length; i++) {
+            sb.push(history[i].toString());
         }
+
+        return sb.join(" ");
     };
 };
