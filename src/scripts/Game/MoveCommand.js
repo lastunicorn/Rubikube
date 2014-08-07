@@ -17,21 +17,32 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.MoveCommand = function (cubeCommander, moveId) {
-    function calculateUndoMove () {
-        return dust.rubikube.CubeMove.inverse(moveId);
+dust.rubikube.MoveCommand = function (options) {
+    function calculateUndoMove() {
+        return dust.rubikube.CubeMove.inverse(options.moveId);
     }
 
     this.execute = function () {
-        cubeCommander.move(moveId);
+        options.performMove(options.moveId);
     };
 
     this.undo = function () {
         var undoMoveId = calculateUndoMove();
-        cubeCommander.move(undoMoveId);
+        options.performMove(undoMoveId);
     };
 
     this.toString = function () {
-        return dust.rubikube.CubeMove.toString(moveId);
-    }
+        return dust.rubikube.CubeMove.toString(options.moveId);
+    };
+
+    (function initialize() {
+        if (typeof options !== "object")
+            throw "options are not provided.";
+
+        if (typeof options.performMove !== "function")
+            throw "options does not contain the move function.";
+
+        if (typeof options.moveId !== "number")
+            throw "options does not contain the move id to be performed.";
+    }());
 };

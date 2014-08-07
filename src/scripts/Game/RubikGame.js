@@ -17,6 +17,10 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
+/*
+ Represents a Rubik's cube game.
+ Contains a cube and a history.
+ */
 dust.rubikube.RubikGame = function () {
     var cube;
     var history = [];
@@ -53,11 +57,11 @@ dust.rubikube.RubikGame = function () {
     }
 
     function createAndRunMoveCommand(moveId) {
-        var cubeCommander = {
-            move: cube.move
-        };
+        var command = new dust.rubikube.MoveCommand({
+            performMove: cube.move,
+            moveId: moveId
+        });
 
-        var command = new dust.rubikube.MoveCommand(cubeCommander, moveId);
         history.push(command);
 
         command.execute();

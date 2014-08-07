@@ -17,6 +17,9 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
+/*
+Contains a hard-coded collection of cube transformations.
+ */
 dust.rubikube.Transformations = function () {
     var transformations;
 
