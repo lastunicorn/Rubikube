@@ -20,73 +20,16 @@ dust.rubikube = dust.rubikube || {};
 dust.rubikube.Cube = function () {
     var cells = [];
     var transformations;
-    var history = [];
-    var redoList = [];
 
     var cubeChangedEvent = new dust.Event();
     this.cubeChanged = cubeChangedEvent.client;
 
     this.move = function (moveId) {
-        var type = $.type(moveId);
-        switch (type) {
-            case "number":
-                createAndRunMoveCommand(moveId);
-                break;
-
-            case "array":
-                for (var i = 0; i < moveId.length; i++) {
-                    //if ($.type(moveId[i]) === "number")
-                    createAndRunMoveCommand(moveId[i]);
-                }
-        }
-
+        moveInternal(moveId);
         cubeChangedEvent.raise(this, null);
     };
 
-    function createAndRunMoveCommand(moveId) {
-        var cubeCommander = {
-            move: performMove
-        };
-
-        var command = new dust.rubikube.MoveCommand(cubeCommander, moveId);
-        history.push(command);
-
-        command.execute();
-    }
-
-    this.undoLastMove = function () {
-        if (history.length == 0)
-            return;
-
-        var command = history.pop();
-        redoList.push(command);
-
-        command.undo();
-
-        cubeChangedEvent.raise(this, null);
-    };
-
-    this.isUndoAvailable = function () {
-        return history.length > 0;
-    };
-
-    this.redoMove = function () {
-        if (redoList.length == 0)
-            return;
-
-        var command = redoList.pop();
-        history.push(command);
-
-        command.execute();
-
-        cubeChangedEvent.raise(this, null);
-    };
-
-    this.isRedoAvailable = function () {
-        return redoList.length > 0;
-    };
-
-    function performMove(moveId) {
+    function moveInternal(moveId) {
         var newCells = [];
         var transformationArray = transformations.get(moveId);
 
@@ -99,6 +42,24 @@ dust.rubikube.Cube = function () {
         }
 
         cells = newCells;
+    }
+
+    this.reset = reset;
+
+    function reset(moveIds) {
+        for (var i = 1; i <= 54; i++) {
+            var cell = {
+                id: i,
+                faceId: calculateFace(i)
+            };
+
+            cells[i] = (cell);
+        }
+
+        if (moveIds !== undefined)
+            moveInternal(moveIds);
+
+        cubeChangedEvent.raise(this, null);
     }
 
     function calculateFace(cellNumber) {
@@ -133,40 +94,8 @@ dust.rubikube.Cube = function () {
         return items;
     };
 
-    this.getHistory = function () {
-        var sb = [];
-
-        for (var i = 0; i < history.length; i++) {
-            sb.push(history[i].toString());
-        }
-
-        return sb.join(" ");
-    };
-
-    this.reset = reset;
-
-    function reset() {
-        for (var i = 1; i <= 54; i++) {
-            var cell = {
-                id: i,
-                faceId: calculateFace(i)
-            };
-
-            cells[i] = (cell);
-        }
-
-        history.length = 0;
-
-        cubeChangedEvent.raise(this, null);
-    }
-
-    function onHistoryChanged(){
-        cubeChangedEvent.raise(this, null);
-    }
-
     (function initialize() {
         transformations = new dust.rubikube.Transformations();
-
         reset();
     }());
 };

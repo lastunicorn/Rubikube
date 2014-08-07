@@ -5,10 +5,7 @@ Rubikube
 
 - checkbox to display face's names.
 
-- add new moves:
-	M (Middle): the layer between L and R, turn direction as L (top-down)
-    E (Equator): the layer between U and D, turn direction as D (left-right)
-    S (Standing): the layer between F and B, turn direction as F
+- add events on all faces for left-right-up-down cells.
 
 - ability to export in different notations:
 	- Singmaster

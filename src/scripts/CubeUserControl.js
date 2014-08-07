@@ -91,6 +91,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
     function onKeyup(ev) {
         ev.preventDefault();
 
+        // Propagate KeyUp event to sub controls.
         faceL.keyUp(ev);
         faceR.keyUp(ev);
         faceU.keyUp(ev);
@@ -102,6 +103,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
     function onKeydown(ev) {
         ev.preventDefault();
 
+        // Propagate KeyDown event to sub controls.
         faceL.keyDown(ev);
         faceR.keyDown(ev);
         faceU.keyDown(ev);
@@ -169,12 +171,12 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
 
             case 39: // right arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnYi);
+                    cube.move(dust.rubikube.CubeMove.turnYInverse);
                 break;
 
             case 40: // down arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnXi);
+                    cube.move(dust.rubikube.CubeMove.turnXInverse);
                 break;
         }
     }
@@ -194,7 +196,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
 
             case 102: // keypad 6
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnYi);
+                    cube.move(dust.rubikube.CubeMove.turnYInverse);
                 else if (ev.shiftKey)
                     cube.move(dust.rubikube.CubeMove.rightInverse);
                 else
@@ -212,7 +214,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
 
             case 98: // keypad 2
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnXi);
+                    cube.move(dust.rubikube.CubeMove.turnXInverse);
                 else if (ev.shiftKey)
                     cube.move(dust.rubikube.CubeMove.downInverse);
                 else

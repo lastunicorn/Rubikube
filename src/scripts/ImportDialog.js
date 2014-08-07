@@ -17,7 +17,7 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.ImportDialog = function (selector, cube) {
+dust.rubikube.ImportDialog = function (selector, rubikGame) {
     var $dialog;
 
     this.open = function () {
@@ -26,10 +26,7 @@ dust.rubikube.ImportDialog = function (selector, cube) {
 
     function onOkButtonClick() {
         var text = $dialog.find("#importValue").val();
-        var moves = dust.rubikube.CubeMove.parse(text);
-
-        cube.reset();
-        cube.move(moves);
+        rubikGame.import(text);
 
         $dialog.dialog("close");
     }

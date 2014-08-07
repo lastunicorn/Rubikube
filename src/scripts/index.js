@@ -15,7 +15,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 (function () {
-    var cube;
+    var rubikGame;
     var cubeUserControl;
 
     var $history;
@@ -31,25 +31,25 @@
     }
 
     function onButtonUndoClicked() {
-        cube.undoLastMove();
+        rubikGame.undoLastMove();
     }
 
     function onButtonRedoClicked() {
-        cube.redoMove();
+        rubikGame.redoMove();
     }
 
     function onButtonResetClicked() {
-        cube.reset();
+        rubikGame.reset();
     }
 
     function refreshAllControls() {
-        var text = cube.getHistory();
+        var text = rubikGame.getHistory();
         $history.text(text);
 
-        var isUndoAvailable = cube.isUndoAvailable();
+        var isUndoAvailable = rubikGame.isUndoAvailable();
         $buttonUndo.prop("disabled", !isUndoAvailable);
 
-        var isRedoAvailable = cube.isRedoAvailable();
+        var isRedoAvailable = rubikGame.isRedoAvailable();
         $buttonRedo.prop("disabled", !isRedoAvailable);
     }
 
@@ -71,16 +71,16 @@
 
     function scramble() {
         var moves = dust.rubikube.CubeMove.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
-        cube.move(moves);
+        rubikGame.move(moves);
     }
 
     $(function () {
-        cube = new dust.rubikube.Cube();
+        rubikGame = new dust.rubikube.RubikGame();
 
         var faceColors = new dust.rubikube.CubeColors();
-        cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", cube, faceColors);
+        cubeUserControl = new dust.rubikube.CubeUserControl("#cubeContainer", rubikGame, faceColors);
 
-        cube.cubeChanged.subscribe(onCubeChanged);
+        rubikGame.cubeChanged.subscribe(onCubeChanged);
 
         var $buttonScramble = $("#buttonScramble");
         $buttonScramble.click(onButtonScrambleClicked);
@@ -106,8 +106,8 @@
         $history = $("#historyValue");
 
         dialogHelp = new dust.rubikube.HelpDialog("#dialogHelp");
-        dialogImport = new dust.rubikube.ImportDialog("#dialogImport", cube);
-        dialogExport = new dust.rubikube.ExportDialog("#dialogExport");
+        dialogImport = new dust.rubikube.ImportDialog("#dialogImport", rubikGame);
+        dialogExport = new dust.rubikube.ExportDialog("#dialogExport", rubikGame);
 
         refreshAllControls();
     });

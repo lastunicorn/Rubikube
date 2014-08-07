@@ -99,7 +99,7 @@ dust.rubikube.Transformations = function () {
         "37-19;38-20;39-21;40-22;41-23;42-24;43-25;44-26;45-27;" +
         "46-36;47-35;48-34;49-33;50-32;51-31;52-30;53-29;54-28";
 
-    var turnXi = "1-3;2-6;3-9;4-2;5-5;6-8;7-1;8-4;9-7;" +
+    var turnXInverse = "1-3;2-6;3-9;4-2;5-5;6-8;7-1;8-4;9-7;" +
         "10-16;11-13;12-10;13-17;14-14;15-11;16-18;17-15;18-12;" +
         "19-37;20-38;21-39;22-40;23-41;24-42;25-43;26-44;27-45;" +
         "28-54;29-53;30-52;31-51;32-50;33-49;34-48;35-47;36-46;" +
@@ -113,7 +113,7 @@ dust.rubikube.Transformations = function () {
         "37-1;38-2;39-3;40-4;41-5;42-6;43-7;44-8;45-9;" +
         "46-10;47-11;48-12;49-13;50-14;51-15;52-16;53-17;54-18";
 
-    var turnYi = "1-37;2-38;3-39;4-40;5-41;6-42;7-43;8-44;9-45;" +
+    var turnYInverse = "1-37;2-38;3-39;4-40;5-41;6-42;7-43;8-44;9-45;" +
         "10-46;11-47;12-48;13-49;14-50;15-51;16-52;17-53;18-54;" +
         "19-25;20-22;21-19;22-26;23-23;24-20;25-27;26-24;27-21;" +
         "28-30;29-33;30-36;31-29;32-32;33-35;34-28;35-31;36-34;" +
@@ -127,12 +127,42 @@ dust.rubikube.Transformations = function () {
         "37-39;38-42;39-45;40-38;41-41;42-44;43-37;44-40;45-43;" +
         "46-52;47-49;48-46;49-53;50-50;51-47;52-54;53-51;54-48";
 
-    var turnZi = "1-34;2-31;3-28;4-35;5-32;6-29;7-36;8-33;9-30;" +
+    var turnZInverse = "1-34;2-31;3-28;4-35;5-32;6-29;7-36;8-33;9-30;" +
         "10-25;11-22;12-19;13-26;14-23;15-20;16-27;17-24;18-21;" +
         "19-7;20-4;21-1;22-8;23-5;24-2;25-9;26-6;27-3;" +
         "28-16;29-13;30-10;31-17;32-14;33-11;34-18;35-15;36-12;" +
         "37-43;38-40;39-37;40-44;41-41;42-38;43-45;44-42;45-39;" +
         "46-48;47-51;48-54;49-47;50-50;51-53;52-46;53-49;54-52";
+
+    var middle = "20-38;23-41;26-44;" +
+        "29-53;32-50;35-47;" +
+        "38-29;41-32;44-35;" +
+        "47-26;50-23;53-20";
+
+    var middleInverse = "20-53;23-50;26-47;" +
+        "29-38;32-41;35-44;" +
+        "38-20;41-23;44-26;" +
+        "47-35;50-32;53-29";
+
+    var equator = "4-40;5-41;6-42;" +
+        "13-49;14-50;15-51;" +
+        "40-13;41-14;42-15;" +
+        "49-4;50-5;51-6";
+
+    var equatorInverse = "4-49;5-50;6-51;" +
+        "13-40;14-41;15-42;" +
+        "40-4;41-5;42-6;" +
+        "49-13;50-14;51-15";
+
+    var standing = "2-24;5-23;8-22;" +
+        "11-33;14-32;17-31;" +
+        "22-11;23-14;24-17;" +
+        "31-2;32-5;33-8";
+
+    var standingInverse = "2-31;5-32;8-33;" +
+        "11-22;14-23;17-24;" +
+        "22-8;23-5;24-2;" +
+        "31-17;32-14;33-11";
 
     this.get = function (cubeMove) {
         return transformations[cubeMove];
@@ -169,10 +199,17 @@ dust.rubikube.Transformations = function () {
         transformations[dust.rubikube.CubeMove.backInverse] = parseTransformation(backInverse);
 
         transformations[dust.rubikube.CubeMove.turnX] = parseTransformation(turnX);
-        transformations[dust.rubikube.CubeMove.turnXi] = parseTransformation(turnXi);
+        transformations[dust.rubikube.CubeMove.turnXInverse] = parseTransformation(turnXInverse);
         transformations[dust.rubikube.CubeMove.turnY] = parseTransformation(turnY);
-        transformations[dust.rubikube.CubeMove.turnYi] = parseTransformation(turnYi);
+        transformations[dust.rubikube.CubeMove.turnYInverse] = parseTransformation(turnYInverse);
         transformations[dust.rubikube.CubeMove.turnZ] = parseTransformation(turnZ);
-        transformations[dust.rubikube.CubeMove.turnZi] = parseTransformation(turnZi);
+        transformations[dust.rubikube.CubeMove.turnZInverse] = parseTransformation(turnZInverse);
+
+        transformations[dust.rubikube.CubeMove.middle] = parseTransformation(middle);
+        transformations[dust.rubikube.CubeMove.middleInverse] = parseTransformation(middleInverse);
+        transformations[dust.rubikube.CubeMove.equator] = parseTransformation(equator);
+        transformations[dust.rubikube.CubeMove.equatorInverse] = parseTransformation(equatorInverse);
+        transformations[dust.rubikube.CubeMove.standing] = parseTransformation(standing);
+        transformations[dust.rubikube.CubeMove.standingInverse] = parseTransformation(standingInverse);
     }());
 };

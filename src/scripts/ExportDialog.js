@@ -17,7 +17,7 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.ExportDialog = function (selector) {
+dust.rubikube.ExportDialog = function (selector, rubikGame) {
     var $dialog;
 
     this.open = function () {
@@ -25,8 +25,7 @@ dust.rubikube.ExportDialog = function (selector) {
     };
 
     function onDialogOpen() {
-        var text = $("#historyValue").text();
-        text = $.trim(text);
+        var text = rubikGame.getHistory();
 
         $dialog.find("#exportValue").val(text);
         $dialog.find("#exportValue").select();
