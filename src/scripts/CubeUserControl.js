@@ -17,7 +17,7 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
+dust.rubikube.CubeUserControl = function (parentSelector, rubikGame, faceColors) {
     var $parent;
     var $cube;
 
@@ -29,7 +29,7 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
     var faceB;
 
     function refreshCube() {
-        var cells = cube.toCellArray();
+        var cells = rubikGame.toCellArray();
 
         faceL.refreshCells(cells.slice(1, 10));
         faceR.refreshCells(cells.slice(10, 19));
@@ -119,64 +119,64 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
         switch (ev.which) {
             case 76: // l
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.leftInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.leftInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.left);
+                    rubikGame.move(dust.rubikube.CubeMove.left);
                 break;
 
             case 82: // r
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.rightInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.rightInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.right);
+                    rubikGame.move(dust.rubikube.CubeMove.right);
                 break;
 
             case 85: // u
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.upInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.upInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.up);
+                    rubikGame.move(dust.rubikube.CubeMove.up);
                 break;
 
             case 68: // d
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.downInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.downInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.down);
+                    rubikGame.move(dust.rubikube.CubeMove.down);
                 break;
 
             case 70: // f
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.frontInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.frontInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.front);
+                    rubikGame.move(dust.rubikube.CubeMove.front);
                 break;
 
             case 66: // b
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.backInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.backInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.back);
+                    rubikGame.move(dust.rubikube.CubeMove.back);
                 break;
 
             case 37: // left arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnY);
+                    rubikGame.move(dust.rubikube.CubeMove.turnY);
                 break;
 
             case 38: // up arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnX);
+                    rubikGame.move(dust.rubikube.CubeMove.turnX);
                 break;
 
             case 39: // right arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnYInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.turnYInverse);
                 break;
 
             case 40: // down arrow
                 if (!ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.turnXInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.turnXInverse);
                 break;
         }
     }
@@ -187,76 +187,76 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
         switch (ev.which) {
             case 100: // keypad 4
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnY);
+                    rubikGame.move(dust.rubikube.CubeMove.turnY);
                 else if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.leftInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.leftInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.left);
+                    rubikGame.move(dust.rubikube.CubeMove.left);
                 break;
 
             case 102: // keypad 6
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnYInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.turnYInverse);
                 else if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.rightInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.rightInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.right);
+                    rubikGame.move(dust.rubikube.CubeMove.right);
                 break;
 
             case 104: // keypad 8
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnX);
+                    rubikGame.move(dust.rubikube.CubeMove.turnX);
                 else if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.upInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.upInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.up);
+                    rubikGame.move(dust.rubikube.CubeMove.up);
                 break;
 
             case 98: // keypad 2
                 if (ev.ctrlKey)
-                    cube.move(dust.rubikube.CubeMove.turnXInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.turnXInverse);
                 else if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.downInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.downInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.down);
+                    rubikGame.move(dust.rubikube.CubeMove.down);
                 break;
 
             case 101: // keypad 5
                 if (ev.ctrlKey)
                     break;
                 else if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.frontInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.frontInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.front);
+                    rubikGame.move(dust.rubikube.CubeMove.front);
                 break;
 
             case 105: // keypad 9
                 if (ev.ctrlKey)
                     break;
                 else if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.backInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.backInverse);
                 else
-                    cube.move(dust.rubikube.CubeMove.back);
+                    rubikGame.move(dust.rubikube.CubeMove.back);
                 break;
 
             case 37: // left arrow
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.leftInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.leftInverse);
                 break;
 
             case 38: // up arrow
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.upInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.upInverse);
                 break;
 
             case 39: // right arrow
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.rightInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.rightInverse);
                 break;
 
             case 40: // down arrow
                 if (ev.shiftKey)
-                    cube.move(dust.rubikube.CubeMove.downInverse);
+                    rubikGame.move(dust.rubikube.CubeMove.downInverse);
                 break;
         }
     }
@@ -264,16 +264,16 @@ dust.rubikube.CubeUserControl = function (parentSelector, cube, faceColors) {
     (function initialize() {
         $parent = $(parentSelector);
 
-        faceL = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.left, faceColors);
-        faceR = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.right, faceColors);
-        faceU = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.up, faceColors);
-        faceD = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.down, faceColors);
-        faceF = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.front, faceColors);
-        faceB = new dust.rubikube.CubeFaceUserControl(cube, dust.rubikube.CubeFace.back, faceColors);
+        faceL = new dust.rubikube.CubeFaceUserControl(rubikGame, dust.rubikube.CubeFace.left, faceColors);
+        faceR = new dust.rubikube.CubeFaceUserControl(rubikGame, dust.rubikube.CubeFace.right, faceColors);
+        faceU = new dust.rubikube.CubeFaceUserControl(rubikGame, dust.rubikube.CubeFace.up, faceColors);
+        faceD = new dust.rubikube.CubeFaceUserControl(rubikGame, dust.rubikube.CubeFace.down, faceColors);
+        faceF = new dust.rubikube.CubeFaceUserControl(rubikGame, dust.rubikube.CubeFace.front, faceColors);
+        faceB = new dust.rubikube.CubeFaceUserControl(rubikGame, dust.rubikube.CubeFace.back, faceColors);
 
         createUi();
 
-        cube.cubeChanged.subscribe(onCubeChanged);
+        rubikGame.cubeChanged.subscribe(onCubeChanged);
 
         $cube.keydown(onKeydown);
         $cube.keyup(onKeyup);

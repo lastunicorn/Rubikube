@@ -57,4 +57,4 @@ dust.rubikube.ImportDialog = function (selector, rubikGame) {
             open: onDialogOpen
         });
     }())
-}
+};

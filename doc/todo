@@ -5,9 +5,15 @@ Rubikube
 
 - checkbox to display face's names.
 
-- add events on all faces for left-right-up-down cells.
+- ability to display history in different notations:
+	- Singmaster
+	- Wolstenholme
+	
+- ability to import history in different notations:
+	- Singmaster
+	- Wolstenholme
 
-- ability to export in different notations:
+- ability to export history in different notations:
 	- Singmaster
 	- Wolstenholme
 
@@ -16,3 +22,5 @@ Rubikube
 - add method to transform history
 	- remove XYZ
 	- remove MES
+
+- add option to export history in contracted form (Singmaster only)

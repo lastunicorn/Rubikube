@@ -17,7 +17,7 @@
 window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 
-dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
+dust.rubikube.CubeFaceUserControl = function (rubikGame, cubeFaceId, faceColors) {
     var $parent;
 
     var $face;
@@ -40,12 +40,12 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
 
     this.allowTurnCube = function (value) {
         allowTurnCube = value;
-    }
+    };
 
     this.setParent = function (parentSelector) {
         $parent = $(parentSelector);
         $parent.append($face);
-    }
+    };
 
     this.refreshCells = function (cells) {
         for (var i = 0; i < 9; i++) {
@@ -102,6 +102,15 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
             $face.append(createFaceRow());
     }
 
+    function createFaceRow() {
+        var $tr = $("<tr/>");
+
+        for (var i = 0; i < 3; i++)
+            $tr.append($("<td/>"));
+
+        return $tr;
+    }
+
     function refreshArrow() {
         if (isMouseOverCenterCell) {
             if (isRightMouseButtonPressed) {
@@ -148,14 +157,14 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
             isShiftPressed = false;
             refreshArrow();
         }
-    }
+    };
 
     this.keyDown = function (ev) {
         if (ev.which == 16) {
             isShiftPressed = true;
             refreshArrow();
         }
-    }
+    };
 
     function onContextMenu(ev) {
         ev.preventDefault();
@@ -210,7 +219,7 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
             cubeMoveId = dust.rubikube.CubeMove.inverse(cubeMoveId);
         }
 
-        cube.move(cubeMoveId);
+        rubikGame.move(cubeMoveId);
     }
 
     function onCellCenterMouseEnter() {
@@ -224,17 +233,11 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
     }
 
     function onCellLeftMouseEnter() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverLeftCell = true;
         refreshArrow();
     }
 
     function onCellLeftMouseOut() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverLeftCell = false;
         refreshArrow();
     }
@@ -242,27 +245,40 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
     function onCellLeftMouseDown(ev) {
         ev.preventDefault();
 
-        if (!allowTurnCube)
-            return;
+        switch (cubeFaceId) {
+            case dust.rubikube.CubeFace.front:
+            case dust.rubikube.CubeFace.left:
+            case dust.rubikube.CubeFace.right:
+            case dust.rubikube.CubeFace.back:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnY);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.equatorInverse);
+                break;
 
-        if (ev.shiftKey || ev.which === 3)
-            cube.move(dust.rubikube.CubeMove.turnY);
-        else
-            cube.move(dust.rubikube.CubeMove.equatorInverse);
+            case dust.rubikube.CubeFace.up:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standingInverse);
+                break;
+
+            case dust.rubikube.CubeFace.down:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZ);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standing);
+                break;
+        }
     }
 
     function onCellRightMouseEnter() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverRightCell = true;
         refreshArrow();
     }
 
     function onCellRightMouseOut() {
         isMouseOverRightCell = false;
-        if (!allowTurnCube)
-            return;
 
         refreshArrow();
     }
@@ -270,27 +286,39 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
     function onCellRightMouseDown(ev) {
         ev.preventDefault();
 
-        if (!allowTurnCube)
-            return;
+        switch (cubeFaceId) {
+            case dust.rubikube.CubeFace.front:
+            case dust.rubikube.CubeFace.left:
+            case dust.rubikube.CubeFace.right:
+            case dust.rubikube.CubeFace.back:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnYInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.equator);
+                break;
 
-        if (ev.shiftKey || ev.which === 3)
-            cube.move(dust.rubikube.CubeMove.turnYInverse);
-        else
-            cube.move(dust.rubikube.CubeMove.equator);
+            case dust.rubikube.CubeFace.up:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZ);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standing);
+                break;
+
+            case dust.rubikube.CubeFace.down:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standingInverse);
+                break;
+        }
     }
 
     function onCellUpMouseEnter() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverUpCell = true;
         refreshArrow();
     }
 
     function onCellUpMouseOut() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverUpCell = false;
         refreshArrow();
     }
@@ -298,27 +326,45 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
     function onCellUpMouseDown(ev) {
         ev.preventDefault();
 
-        if (!allowTurnCube)
-            return;
+        switch (cubeFaceId) {
+            case dust.rubikube.CubeFace.front:
+            case dust.rubikube.CubeFace.up:
+            case dust.rubikube.CubeFace.down:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnX);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.middleInverse);
+                break;
 
-        if (ev.shiftKey || ev.which === 3)
-            cube.move(dust.rubikube.CubeMove.turnX);
-        else
-            cube.move(dust.rubikube.CubeMove.middleInverse);
+            case dust.rubikube.CubeFace.back:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnXInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.middle);
+                break;
+
+            case dust.rubikube.CubeFace.left:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZ);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standing);
+                break;
+
+            case dust.rubikube.CubeFace.right:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standingInverse);
+                break;
+        }
     }
 
     function onCellDownMouseEnter() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverDownCell = true;
         refreshArrow();
     }
 
     function onCellDownMouseOut() {
-        if (!allowTurnCube)
-            return;
-
         isMouseOverDownCell = false;
         refreshArrow();
     }
@@ -326,22 +372,37 @@ dust.rubikube.CubeFaceUserControl = function (cube, cubeFaceId, faceColors) {
     function onCellDownMouseDown(ev) {
         ev.preventDefault();
 
-        if (!allowTurnCube)
-            return;
+        switch (cubeFaceId) {
+            case dust.rubikube.CubeFace.front:
+            case dust.rubikube.CubeFace.up:
+            case dust.rubikube.CubeFace.down:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnXInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.middle);
+                break;
 
-        if (ev.shiftKey || ev.which === 3)
-            cube.move(dust.rubikube.CubeMove.turnXInverse);
-        else
-            cube.move(dust.rubikube.CubeMove.middle);
-    }
+            case dust.rubikube.CubeFace.back:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnX);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.middleInverse);
+                break;
 
-    function createFaceRow() {
-        var $tr = $("<tr/>");
+            case dust.rubikube.CubeFace.left:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZInverse);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standingInverse);
+                break;
 
-        for (var i = 0; i < 3; i++)
-            $tr.append($("<td/>"));
-
-        return $tr;
+            case dust.rubikube.CubeFace.right:
+                if (ev.shiftKey || ev.which === 3)
+                    rubikGame.move(dust.rubikube.CubeMove.turnZ);
+                else
+                    rubikGame.move(dust.rubikube.CubeMove.standing);
+                break;
+        }
     }
 
     (function initialize() {

@@ -44,6 +44,8 @@
 
     function refreshAllControls() {
         var text = rubikGame.getHistory();
+//        var remover = new dust.rubikube.singmaster.XYZRemover();
+//        text = remover.execute(text);
         $history.text(text);
 
         var isUndoAvailable = rubikGame.isUndoAvailable();

@@ -97,7 +97,8 @@ dust.rubikube.RubikGame = function () {
 
     this.import = function (text) {
         var moves = dust.rubikube.singmaster.SingmasterNotation.parse(text);
-        cube.reset(moves);
+        cube.reset();
+        move(moves);
     };
 
     function onCubeChanged(ev) {

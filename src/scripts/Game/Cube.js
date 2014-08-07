@@ -46,7 +46,7 @@ dust.rubikube.Cube = function () {
 
     this.reset = reset;
 
-    function reset(moveIds) {
+    function reset() {
         for (var i = 1; i <= 54; i++) {
             var cell = {
                 id: i,
@@ -55,9 +55,6 @@ dust.rubikube.Cube = function () {
 
             cells[i] = (cell);
         }
-
-        if (moveIds !== undefined)
-            moveInternal(moveIds);
 
         cubeChangedEvent.raise(this, null);
     }

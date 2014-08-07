@@ -40,4 +40,4 @@ dust.rubikube.HelpDialog = function (selector) {
             width: 500
         });
     }())
-}
+};

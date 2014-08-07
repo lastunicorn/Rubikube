@@ -49,4 +49,4 @@ dust.rubikube.ExportDialog = function (selector, rubikGame) {
             open: onDialogOpen
         });
     }())
-}
+};
