@@ -70,7 +70,7 @@
     }
 
     function scramble() {
-        var moves = dust.rubikube.CubeMove.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
+        var moves = dust.rubikube.SingmasterNotation.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
         rubikGame.move(moves);
     }
 
