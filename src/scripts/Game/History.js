@@ -21,7 +21,7 @@ dust.rubikube.History = function () {
     var history = [];
     var redoList = [];
 
-    this.add = function(command){
+    this.add = function (command) {
         history.push(command);
         redoList.length = 0;
 
@@ -61,13 +61,22 @@ dust.rubikube.History = function () {
         redoList.length = 0;
     };
 
-    this.toString = function () {
-        var sb = [];
+    this.toString = function (notationType, options) {
+        var moveIds = [];
 
-        for (var i = 0; i < history.length; i++) {
-            sb.push(history[i].toString());
-        }
+        history.forEach(function (item, index, array) {
+            moveIds.push(item.getMoveId());
+        });
 
-        return sb.join(" ");
+        var stringifier = createStringifier(notationType, options);
+        return stringifier.toString(moveIds);
     };
+
+    function createStringifier(notationType, options) {
+        switch (notationType) {
+            default:
+            case "singmaster":
+                return new dust.rubikube.singmaster.Stringifier(options);
+        }
+    }
 };

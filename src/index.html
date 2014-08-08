@@ -13,6 +13,7 @@
 
         <script type="text/javascript" src="libraries/jQuery/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="libraries/jQueryUI/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="libraries/jquery.path.js"></script>
 
         <script type="text/javascript" src="scripts/Event.js"></script>
         <script type="text/javascript" src="scripts/Game/MoveCommand.js"></script>
@@ -21,6 +22,7 @@
         <script type="text/javascript" src="scripts/Game/Singmaster/Stringifier.js"></script>
         <script type="text/javascript" src="scripts/Game/Singmaster/CubeMoveTransformer.js"></script>
         <script type="text/javascript" src="scripts/Game/Singmaster/XYZRemover.js"></script>
+        <script type="text/javascript" src="scripts/Game/Singmaster/MESRemover.js"></script>
         <script type="text/javascript" src="scripts/Game/Singmaster/SingmasterNotation.js"></script>
         <script type="text/javascript" src="scripts/Game/CubeFace.js"></script>
         <script type="text/javascript" src="scripts/Game/CubeColors.js"></script>
@@ -39,13 +41,34 @@
     </head>
     <body>
         <div id="content">
+
+            <!-- -------------------------------------------------------------------------------- -->
+            <!-- Test -->
+            <!-- -------------------------------------------------------------------------------- -->
+
+            <!--<div id="test" class="rbk-container">-->
+                <!--<div class="rbk-cell cell1">1</div>-->
+                <!--<div class="rbk-cell cell2">2</div>-->
+                <!--<div class="rbk-cell cell3">3</div>-->
+                <!--<div class="rbk-cell cell4">4</div>-->
+                <!--<div class="rbk-cell cell5">5</div>-->
+                <!--<div class="rbk-cell cell6">6</div>-->
+                <!--<div class="rbk-cell cell7">7</div>-->
+                <!--<div class="rbk-cell cell8">8</div>-->
+                <!--<div class="rbk-cell cell9">9</div>-->
+            <!--</div>-->
+
+            <!-- -------------------------------------------------------------------------------- -->
+            <!-- Main Page -->
+            <!-- -------------------------------------------------------------------------------- -->
+
             <div id="title">Rubikube - A Rubik's Cube Game</div>
 
             <div id="cubeContainer"></div>
 
             <div class="control-bar">
-				<button id="buttonScramble"><img src="images/scramble.png"/><span>Scramble</span></button>
-				<button id="buttonUndo"><img src="images/undo.png"/><span>Undo</span></button>
+                <button id="buttonScramble"><img src="images/scramble.png"/><span>Scramble</span></button>
+                <button id="buttonUndo"><img src="images/undo.png"/><span>Undo</span></button>
                 <button id="buttonRedo"><img src="images/redo.png"/><span>Redo</span></button>
                 <button id="buttonReset"><img src="images/reset.png"/><span>Reset</span></button>
             </div>
@@ -141,13 +164,15 @@
             <div id="dialogExport" title="Export">
                 <div class="label">Copy to clipboard: Ctrl+C</div>
                 <textarea id="exportValue"></textarea>
+                <div id="export_notationType">
+                    <input type="radio" id="export_singmasterNotation" name="notationType" value="singmaster" checked="checked"/><label for="export_singmasterNotation">Singmaster</label>
+                    <input type="radio" id="export_wolstenholmeNotation" name="notationType" value="wolstenholme"/><label for="export_wolstenholmeNotation">Wolstenholme</label>
+                </div>
+                <div id="export_singmasterOptions" class="notation-options">
+                    <input type="checkbox" id="allowXYZCheckBox" value="allowXYZ" checked="checked"/><label for="allowXYZCheckBox">Allow XYZ</label>
+                    <input type="checkbox" id="allowMESCheckBox" value="allowMES" checked="checked"/><label for="allowMESCheckBox">Allow MES</label>
+                </div>
             </div>
-
-            <!-- -------------------------------------------------------------------------------- -->
-            <!-- Test -->
-            <!-- -------------------------------------------------------------------------------- -->
-
-            <div id="cell"
 
         </div>
     </body>

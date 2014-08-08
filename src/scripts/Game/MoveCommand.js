@@ -35,6 +35,10 @@ dust.rubikube.MoveCommand = function (options) {
         return dust.rubikube.singmaster.SingmasterNotation.toString(options.moveId);
     };
 
+    this.getMoveId = function () {
+        return options.moveId;
+    };
+
     (function initialize() {
         if (typeof options !== "object")
             throw "options are not provided.";

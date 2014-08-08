@@ -84,8 +84,8 @@ dust.rubikube.RubikGame = function () {
         return cube.toCellArray();
     };
 
-    this.getHistory = function () {
-        return history.toString();
+    this.getHistory = function (notationType, options) {
+        return history.toString(notationType, options);
     };
 
     this.reset = function () {

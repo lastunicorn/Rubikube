@@ -251,3 +251,59 @@ button:disabled, .button:disabled {
 #dialogExport .label {
     margin: 0  0 10px 0;
 }
+
+#dialogExport #export_notationType {
+    margin: 3px 0;
+}
+
+#dialogExport #export_notationType {
+    margin: 10px 0;
+}
+
+#dialogExport .notation-options {
+    border: 2px solid #333333;
+    border-radius: 2px;
+    margin-top: 10px;
+    padding: 7px;
+    background-color: #222222;
+}
+
+/* Test
+--------------------------------------------*/
+
+.rbk-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: #0078a3;
+    border: 1px solid black;
+    border-spacing: 100px;
+}
+
+.rbk-cell {
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    /*margin: -18px 0 0 -18px;/**/
+    border-radius: 3px;
+    border: 2px solid #ffffff;/**/
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    color: #888;
+    background-color: #ba9d37;
+    padding: 0;
+    /*-webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;/**/
+    /*transition: all 1s ease-in-out;/**/
+    transform: rotate(0deg);
+    border-spacing: 0px;
+    line-height: 37px;
+}
+
+.test {
+    left: 10px;
+    background-color:black;
+    transform: rotate(90deg);
+}

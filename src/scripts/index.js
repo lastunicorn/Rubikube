@@ -44,8 +44,6 @@
 
     function refreshAllControls() {
         var text = rubikGame.getHistory();
-//        var remover = new dust.rubikube.singmaster.XYZRemover();
-//        text = remover.execute(text);
         $history.text(text);
 
         var isUndoAvailable = rubikGame.isUndoAvailable();
@@ -112,6 +110,65 @@
         dialogExport = new dust.rubikube.ExportDialog("#dialogExport", rubikGame);
 
         refreshAllControls();
+
+//        $("#test .rbk-cell.cell9")
+//            .css({
+//                "border-spacing": "90px",
+//                left: "100px",
+//                top: "100px"
+//            })
+//            .animate({
+//                top: "50px"
+//            }, {
+//                duration: 300,
+//                easing: "easeInQuart"
+//            })
+//            .animate({
+//                path: new $.path.arc({
+//                    center: [37 + 2 + 18 - 18, 37 + 2 + 18 - 18],
+//                    radius: 37 + 2 + 18 - 18,
+//                    start: 90,
+//                    end: 180,
+//                    dir: 1
+//                }),
+//                "border-spacing": 0
+//            }, {
+//                duration: 300,
+//                easing: "linear",
+//                step: function (now, fx) {
+//                    //$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+//                    //$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+//                    $(this).css('transform', 'rotate(' + now + 'deg)');
+//                }
+//            })
+//            .animate({
+//                left: "0"
+//            }, {
+//                duration: 300,
+//                easing: "easeOutQuart"
+//            });
+//
+//        function layDownFace($cells) {
+//            $cells.each(function (index) {
+//                var $elem = $(this);
+//
+//                var cellHeight = $elem.height();
+//                var cellWidth = $elem.width();
+//
+//                var borderTopWidth = parseInt($elem.css("border-top-width"), 10);
+//                var borderBottomWidth = parseInt($elem.css("border-bottom-width"), 10);
+//                var borderLeftWidth = parseInt($elem.css("border-left-width"), 10);
+//                var borderRightWidth = parseInt($elem.css("border-right-width"), 10);
+//                var cellSpace = 2;
+//
+//                $elem.css({
+//                    top: Math.floor(index / 3) * (cellHeight + borderTopWidth + borderBottomWidth + cellSpace),
+//                    left: (index % 3) * (cellWidth + borderLeftWidth + borderRightWidth + cellSpace)
+//                });
+//            });
+//        }
+//
+//        layDownFace($(".rbk-cell"));
     });
 
 }());

@@ -21,18 +21,50 @@ dust.rubikube.ExportDialog = function (selector, rubikGame) {
     var $dialog;
 
     this.open = function () {
-        $dialog.dialog("open");
+        $dialog.dialog('open');
     };
 
-    function onDialogOpen() {
-        var text = rubikGame.getHistory();
+    function redisplayData() {
+        var notationType = $('input:radio[name=notationType]:checked').val();
+        var allowXYZ = $('#allowXYZCheckBox').is(':checked');
+        var allowMES = $('#allowMESCheckBox').is(':checked');
 
-        $dialog.find("#exportValue").val(text);
-        $dialog.find("#exportValue").select();
+        var text = rubikGame.getHistory(notationType, {
+            allowXYZ: allowXYZ,
+            allowMES: allowMES
+        });
+
+        $dialog.find('#exportValue').val(text);
+        $dialog.find('#exportValue').select();
+    }
+
+    function onDialogOpen() {
+        redisplayData();
     }
 
     function onCloseButtonClick() {
         $dialog.dialog("close");
+    }
+
+    function onNotationTypeChange() {
+        var $singmasterOptions = $('#export_singmasterOptions');
+        $singmasterOptions.hide();
+
+        if (this.value === 'singmaster') {
+            $singmasterOptions.show();
+        }
+        else if (this.value === 'wolstenholme') {
+        }
+
+        $dialog.find('#exportValue').select();
+    }
+
+    function onAllowXYZCheckBoxChange() {
+        redisplayData();
+    }
+
+    function onAllowMESCheckBoxChange() {
+        redisplayData();
     }
 
     (function initialize() {
@@ -48,5 +80,10 @@ dust.rubikube.ExportDialog = function (selector, rubikGame) {
             ],
             open: onDialogOpen
         });
+
+        $('input[name=notationType]').change(onNotationTypeChange);
+
+        $('#allowXYZCheckBox').change(onAllowXYZCheckBoxChange);
+        $('#allowMESCheckBox').change(onAllowMESCheckBoxChange);
     }())
 };

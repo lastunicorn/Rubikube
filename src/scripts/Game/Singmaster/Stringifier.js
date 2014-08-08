@@ -18,7 +18,7 @@ window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 dust.rubikube.singmaster = dust.rubikube.singmaster || {};
 
-dust.rubikube.singmaster.Stringifier = function () {
+dust.rubikube.singmaster.Stringifier = function (options) {
 
     this.toString = function (moveIds) {
         switch (typeof moveIds) {
@@ -33,6 +33,16 @@ dust.rubikube.singmaster.Stringifier = function () {
     function stringifyArray(moveIds) {
         if (moveIds.length === undefined)
             return '';
+
+        if (options && options.allowXYZ === false) {
+            var xyzRemover = new dust.rubikube.singmaster.XYZRemover();
+            moveIds = xyzRemover.execute(moveIds);
+        }
+
+        if (options && options.allowMES === false) {
+            var mesRemover = new dust.rubikube.singmaster.MESRemover();
+            moveIds = mesRemover.execute(moveIds);
+        }
 
         var sb = [];
 

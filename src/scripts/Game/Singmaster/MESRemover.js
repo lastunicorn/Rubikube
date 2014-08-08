@@ -29,7 +29,7 @@ dust.rubikube.singmaster.MESRemover = function () {
                 return executeOnString(moves);
 
             case "object":
-                if (moves.constructor === "Array") {
+                if (moves.constructor === Array) {
                     return executeOnArray(moves);
                 }
         }
