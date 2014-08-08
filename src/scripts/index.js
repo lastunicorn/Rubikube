@@ -25,6 +25,7 @@
     var dialogHelp;
     var dialogImport;
     var dialogExport;
+    var dialogAbout;
 
     function onButtonScrambleClicked() {
         scramble();
@@ -69,6 +70,10 @@
         dialogHelp.open();
     }
 
+    function onButtonAboutClick() {
+        dialogAbout.open();
+    }
+
     function scramble() {
         var moves = dust.rubikube.singmaster.SingmasterNotation.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
         rubikGame.move(moves);
@@ -103,11 +108,15 @@
         var $buttonHelp = $("#buttonHelp");
         $buttonHelp.click(onButtonHelpClick);
 
+        var $buttonAbout = $("#buttonAbout");
+        $buttonAbout.click(onButtonAboutClick);
+
         $history = $("#historyValue");
 
         dialogHelp = new dust.rubikube.HelpDialog("#dialogHelp");
         dialogImport = new dust.rubikube.ImportDialog("#dialogImport", rubikGame);
         dialogExport = new dust.rubikube.ExportDialog("#dialogExport", rubikGame);
+        dialogAbout = new dust.rubikube.AboutDialog("#dialogAbout");
 
         refreshAllControls();
 

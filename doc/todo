@@ -1,8 +1,6 @@
 Rubikube
 ========
 
-- about button - opens a popup containing about information.
-
 - checkbox to display face's names.
 
 - ability to display history in different notations:
@@ -13,14 +11,6 @@ Rubikube
 	- Singmaster
 	- Wolstenholme
 
-- ability to export history in different notations:
-	- Singmaster
-	- Wolstenholme
-
 - implement a solving algorithm.
-
-- add method to transform history
-	- remove XYZ
-	- remove MES
 
 - add option to export history in contracted form (Singmaster only)

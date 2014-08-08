@@ -34,8 +34,10 @@
         <script type="text/javascript" src="scripts/CubeFaceUserControl.js"></script>
         <script type="text/javascript" src="scripts/CubeUserControl.js"></script>
         <script type="text/javascript" src="scripts/HelpDialog.js"></script>
+        <script type="text/javascript" src="scripts/AboutDialog.js"></script>
         <script type="text/javascript" src="scripts/ImportDialog.js"></script>
         <script type="text/javascript" src="scripts/ExportDialog.js"></script>
+        <script type="text/javascript" src="scripts/Application.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
 
     </head>
@@ -76,7 +78,8 @@
             <div class="control-bar">
                 <button id="buttonExport">Export</button>
                 <button id="buttonImport">Import</button>
-                <button id="buttonHelp">?</button>
+                <button id="buttonHelp">Help</button>
+                <button id="buttonAbout"><img src="images/info.png"/></button>
             </div>
 
             <div id="historyContainer">
@@ -172,6 +175,18 @@
                     <input type="checkbox" id="allowXYZCheckBox" value="allowXYZ" checked="checked"/><label for="allowXYZCheckBox">Allow XYZ</label>
                     <input type="checkbox" id="allowMESCheckBox" value="allowMES" checked="checked"/><label for="allowMESCheckBox">Allow MES</label>
                 </div>
+            </div>
+
+            <!-- -------------------------------------------------------------------------------- -->
+            <!-- Dialog About -->
+            <!-- -------------------------------------------------------------------------------- -->
+
+            <div id="dialogAbout" title="About">
+                <div id="about_title">
+                    <span id="about_appName">Rubikube</span>
+                    <span id="about_appVersion"></span>
+                </div>
+                <div>Created by Dust in the Wind</div>
             </div>
 
         </div>
