@@ -77,6 +77,9 @@ dust.rubikube.History = function () {
             default:
             case "singmaster":
                 return new dust.rubikube.singmaster.Stringifier(options);
+
+            case "wolstenholme":
+                return new dust.rubikube.wolstenholme.Stringifier(options);
         }
     }
 };

@@ -56,7 +56,7 @@ dust.rubikube.ExportDialog = function (selector, rubikGame) {
         else if (this.value === 'wolstenholme') {
         }
 
-        $dialog.find('#exportValue').select();
+        redisplayData();
     }
 
     function onAllowXYZCheckBoxChange() {

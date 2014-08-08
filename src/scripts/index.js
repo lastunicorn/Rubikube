@@ -75,7 +75,9 @@
     }
 
     function scramble() {
-        var moves = dust.rubikube.singmaster.SingmasterNotation.parse("D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2");
+        var parser = new dust.rubikube.singmaster.Parser();
+        var text = "D2 U2 R B D F' L2 F2 D U B' U2 D2 L2 B' L' F R L F2 U2 L2 U2 D' L2";
+        var moves =  parser.parse(text);
         rubikGame.move(moves);
     }
 

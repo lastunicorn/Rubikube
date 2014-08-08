@@ -32,7 +32,8 @@ dust.rubikube.MoveCommand = function (options) {
     };
 
     this.toString = function () {
-        return dust.rubikube.singmaster.SingmasterNotation.toString(options.moveId);
+        var stringifier = new dust.rubikube.singmaster.Stringifier();
+        return stringifier.toString(options.moveId);
     };
 
     this.getMoveId = function () {
