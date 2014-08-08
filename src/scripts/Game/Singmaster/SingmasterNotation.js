@@ -21,86 +21,8 @@ dust.rubikube.singmaster = dust.rubikube.singmaster || {};
 dust.rubikube.singmaster.SingmasterNotation = {};
 
 dust.rubikube.singmaster.SingmasterNotation.toString = function (moveId) {
-    switch (moveId) {
-        case dust.rubikube.CubeMove.left:
-            return "L";
-
-        case dust.rubikube.CubeMove.leftInverse:
-            return "L'";
-
-        case dust.rubikube.CubeMove.right:
-            return "R";
-
-        case dust.rubikube.CubeMove.rightInverse:
-            return "R'";
-
-        case dust.rubikube.CubeMove.up:
-            return "U";
-
-        case dust.rubikube.CubeMove.upInverse:
-            return "U'";
-
-        case dust.rubikube.CubeMove.down:
-            return "D";
-
-        case dust.rubikube.CubeMove.downInverse:
-            return "D'";
-
-        case dust.rubikube.CubeMove.front:
-            return "F";
-
-        case dust.rubikube.CubeMove.frontInverse:
-            return "F'";
-
-        case dust.rubikube.CubeMove.back:
-            return "B";
-
-        case dust.rubikube.CubeMove.backInverse:
-            return "B'";
-
-        case dust.rubikube.CubeMove.turnX:
-            //return "\u25B2";
-            return "X";
-
-        case dust.rubikube.CubeMove.turnXInverse:
-            //return "\u25BC";
-            return "X'";
-
-        case dust.rubikube.CubeMove.turnY:
-            //return "\u25C0";
-            return "Y";
-
-        case dust.rubikube.CubeMove.turnYInverse:
-            //return "\u25B6";
-            return "Y'";
-
-        case dust.rubikube.CubeMove.turnZ:
-            return "Z";
-
-        case dust.rubikube.CubeMove.turnZInverse:
-            return "Z'";
-
-        case dust.rubikube.CubeMove.middle:
-            return "M";
-
-        case dust.rubikube.CubeMove.middleInverse:
-            return "M'";
-
-        case dust.rubikube.CubeMove.equator:
-            return "E";
-
-        case dust.rubikube.CubeMove.equatorInverse:
-            return "E'";
-
-        case dust.rubikube.CubeMove.standing:
-            return "S";
-
-        case dust.rubikube.CubeMove.standingInverse:
-            return "S'";
-
-        default:
-            return "?";
-    }
+    var stringifier = new dust.rubikube.singmaster.Stringifier();
+    return stringifier.toString(moveId);
 };
 
 dust.rubikube.singmaster.SingmasterNotation.parse = function (str) {

@@ -18,7 +18,7 @@ window.dust = window.dust || {};
 dust.rubikube = dust.rubikube || {};
 dust.rubikube.singmaster = dust.rubikube.singmaster || {};
 
-dust.rubikube.singmaster.XYZRemover = function () {
+dust.rubikube.singmaster.MESRemover = function () {
     var transformer;
 
     this.execute = function (moves) {
@@ -52,27 +52,39 @@ dust.rubikube.singmaster.XYZRemover = function () {
 
         for (var i = 0; i < moveIds.length; i++) {
             switch (moveIds[i]) {
-                case dust.rubikube.CubeMove.turnX:
-                    transformer.moveViewPortXInverse();
-                    break;
-
-                case dust.rubikube.CubeMove.turnXInverse:
+                case dust.rubikube.CubeMove.middle:
+                    newMoveIds.push(dust.rubikube.CubeMove.leftInverse);
+                    newMoveIds.push(dust.rubikube.CubeMove.right);
                     transformer.moveViewPortX();
                     break;
 
-                case dust.rubikube.CubeMove.turnY:
-                    transformer.moveViewPortYInverse();
+                case dust.rubikube.CubeMove.middleInverse:
+                    newMoveIds.push(dust.rubikube.CubeMove.left);
+                    newMoveIds.push(dust.rubikube.CubeMove.rightInverse);
+                    transformer.moveViewPortXInverse();
                     break;
 
-                case dust.rubikube.CubeMove.turnYInverse:
+                case dust.rubikube.CubeMove.equator:
+                    newMoveIds.push(dust.rubikube.CubeMove.up);
+                    newMoveIds.push(dust.rubikube.CubeMove.downInverse);
                     transformer.moveViewPortY();
                     break;
 
-                case dust.rubikube.CubeMove.turnZ:
+                case dust.rubikube.CubeMove.equatorInverse:
+                    newMoveIds.push(dust.rubikube.CubeMove.upInverse);
+                    newMoveIds.push(dust.rubikube.CubeMove.down);
+                    transformer.moveViewPortYInverse();
+                    break;
+
+                case dust.rubikube.CubeMove.standing:
+                    newMoveIds.push(dust.rubikube.CubeMove.frontInverse);
+                    newMoveIds.push(dust.rubikube.CubeMove.back);
                     transformer.moveViewPortZInverse();
                     break;
 
                 case dust.rubikube.CubeMove.turnZInverse:
+                    newMoveIds.push(dust.rubikube.CubeMove.front);
+                    newMoveIds.push(dust.rubikube.CubeMove.backInverse);
                     transformer.moveViewPortZ();
                     break;
 
@@ -86,7 +98,7 @@ dust.rubikube.singmaster.XYZRemover = function () {
         return newMoveIds;
     }
 
-    (function initialize(){
+    (function initialize() {
         transformer = new dust.rubikube.singmaster.CubeMoveTransformer();
     }());
 };
