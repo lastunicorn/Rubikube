@@ -1,4 +1,4 @@
 Rubikube
 ========
 
-A Rubik's cube game.
+A 2D Rubik's cube game.
